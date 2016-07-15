@@ -330,9 +330,9 @@ Layer:
       user: naturalearth
     description: ''
     fields: 
-      featurecla: String
-      ogc_fid: Number
+      name: String
       scalerank: Number
+      type: String
     properties: 
       "buffer-size": 128
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -544,44 +544,6 @@ Layer:
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: geographic_lines
-    Datasource: 
-      dbname: naturalearth
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: ''
-      geometry_table: ''
-      host: postgres
-      key_field: ''
-      key_field_as_attribute: ''
-      max_size: 512
-      password: naturalearth
-      port: 5432
-      srid: ''
-      table: |-
-        ( SELECT *
-          FROM (
-              SELECT * FROM geographic_lines_z2 WHERE z(!scale_denominator!) = 2
-              UNION ALL
-              SELECT * FROM geographic_lines_z3 WHERE z(!scale_denominator!) BETWEEN 3 AND 4
-              UNION ALL
-              SELECT * FROM geographic_lines_z5 WHERE z(!scale_denominator!) >= 5
-          ) AS states
-          WHERE geom && !bbox!
-        ) AS data
-      type: postgis
-      user: naturalearth
-    description: ''
-    fields: 
-      abbrev: String
-      featurecla: String
-      name: String
-      name_long: String
-      note: String
-      ogc_fid: Number
-      scalerank: Number
-    properties: 
-      "buffer-size": 8
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: admin
     Datasource: 
       dbname: naturalearth
@@ -614,6 +576,7 @@ Layer:
     fields: 
       admin_level: Number
       class: String
+      scalerank: Number
     properties: 
       "buffer-size": 0
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
