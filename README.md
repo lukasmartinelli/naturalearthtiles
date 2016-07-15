@@ -1,17 +1,23 @@
 # Natural Earth Vector Tiles [![BSD-3 and ODbL licensed](https://img.shields.io/badge/license-BSD--3/ODbL-blue.svg)](https://github.com/osm2vectortiles/osm2vectortiles#license) [![Build Status](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles)
 Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients.
-
 *Currently in heavy development*
+
+[**:open_file_folder: Download the vector tiles from the releases page**](https://github.com/lukasmartinelli/postgis-editor/releases/latest).
 
 ![Mapbox GL visualization of Natural Earth vector tiles](demo.gif)
 
 Please also checkout our project to [create vector tiles from Open Street Map](http://osm2vectortiles.org).
 
-## Download
-
-[**Download the vector tiles from the releases page**](https://github.com/lukasmartinelli/postgis-editor/releases/latest).
+## Use Vector Tiles
 
 You can use [**mbview**](https://github.com/mapbox/mbview) to take a look at the MBTiles vector tiles locally.
+To display the vector tiles with Mapbox GL you need a tileserver.
+
+Tileservers:
+- [tessera](https://github.com/mojodna/tessera)
+- [tileserver-gl-light](https://github.com/osm2vectortiles/tileserver-gl-light)
+- [tileserver-gl](https://github.com/klokantech/tileserver-gl)
+
 
 ## Run Workflow
 
