@@ -18,7 +18,7 @@ function main() {
     exec_psql_file "$VT_UTIL_DIR/postgis-vt-util.sql"
     exec_psql_file "layers/railroads.sql"
     exec_psql_file "layers/roads.sql"
-    exec_psql_file "layers/country_labels.sql"
+    exec_psql_file "layers/country_label.sql"
     exec_psql_file "layers/state_labels.sql"
     exec_psql_file "layers/playas.sql"
     exec_psql_file "layers/urban_areas.sql"
