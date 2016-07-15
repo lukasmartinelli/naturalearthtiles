@@ -9,40 +9,6 @@ center:
   - 4
 description: ''
 Layer: 
-  - id: country_fill
-    Datasource: 
-      dbname: naturalearth
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: ''
-      geometry_table: ''
-      host: postgres
-      key_field: ''
-      max_size: 512
-      port: 5432
-      table: |-
-        ( SELECT geom, type, name, mapcolor7 AS color
-          FROM ne_110m_admin_0_countries
-          WHERE z(!scale_denominator!) <= 2 AND geom && !bbox!
-          UNION ALL
-          SELECT geom, type, name, mapcolor7 AS color
-          FROM ne_50m_admin_0_countries
-          WHERE z(!scale_denominator!) IN (3,4) AND geom && !bbox!
-          UNION ALL
-          SELECT geom, type, name, mapcolor7 AS color
-          FROM ne_10m_admin_0_countries
-          WHERE z(!scale_denominator!) >= 5 AND geom && !bbox!
-        ) AS data
-      type: postgis
-      user: naturalearth
-      password: naturalearth
-    description: Polygons useful for shading the fill color of countries.
-    fields: 
-      color: Number
-      name: String
-      type: String
-    properties: 
-      "buffer-size": 8
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: playas
     Datasource: 
       dbname: naturalearth
@@ -55,12 +21,12 @@ Layer:
       port: 5432
       table: |-
         ( SELECT geom, name
-          FROM ne_50m_playas
-          WHERE z(!scale_denominator!) IN (3,4) AND geom && !bbox!
-          UNION ALL
-          SELECT geom, name
-          FROM ne_10m_playas
-          WHERE z(!scale_denominator!) >= 5 AND geom && !bbox!
+          FROM (
+              SELECT * FROM playas_z3 WHERE z(!scale_denominator!) BETWEEN 3 AND 4
+              UNION ALL
+              SELECT * FROM playas_z5 WHERE z(!scale_denominator!) >= 5
+          ) AS states
+          WHERE geom && !bbox!
         ) AS data
       type: postgis
       user: naturalearth
@@ -83,14 +49,14 @@ Layer:
       port: 5432
       table: |-
         ( SELECT geom
-          FROM ne_50m_urban_areas
-          WHERE z(!scale_denominator!) IN (3,4)
-          UNION ALL
-          SELECT geom
-          FROM ne_10m_urban_areas
+          FROM (
+              SELECT * FROM urban_areas_z3
+              WHERE z(!scale_denominator!) BETWEEN 3 AND 4
+              UNION ALL
+              SELECT * FROM urban_areas_z5
+              WHERE z(!scale_denominator!) >= 5 AND scalerank-1 <= z(!scale_denominator!)
+          ) AS urban_areas
           WHERE geom && !bbox!
-            AND z(!scale_denominator!) >= 5
-            AND scalerank-1 <= z(!scale_denominator!)
         ) AS data
       type: postgis
       user: naturalearth
@@ -111,29 +77,18 @@ Layer:
       max_size: 512
       port: 5432
       table: |-
-        -- This layer combines oceans & lakes
-        ( -- 1:110,000,000 scale
-          SELECT geom FROM ne_110m_ocean
-          WHERE z(!scale_denominator!) <= 2 AND geom && !bbox!
-          UNION ALL
-          SELECT geom FROM ne_110m_lakes
-          WHERE z(!scale_denominator!) <= 2 AND geom && !bbox!
-          UNION ALL
-          -- 1:50,000,000 scale
-          SELECT geom FROM ne_50m_ocean
-          WHERE z(!scale_denominator!) IN (3,4) AND geom && !bbox!
-          UNION ALL
-          SELECT geom FROM ne_50m_lakes
-          WHERE z(!scale_denominator!) IN (3,4) AND geom && !bbox!
-            AND scalerank-1 <= z(!scale_denominator!)
-          UNION ALL
-          -- 1:10,000,000 scale
-          SELECT geom FROM ne_10m_ocean
-          WHERE z(!scale_denominator!) >= 5 AND geom && !bbox!
-          UNION ALL
-          SELECT geom FROM ne_10m_lakes
-          WHERE z(!scale_denominator!) >= 5 AND geom && !bbox!
-            AND scalerank-1 <= z(!scale_denominator!)
+        ( SELECT geom
+          FROM (
+              SELECT * FROM water_z0
+              WHERE z(!scale_denominator!) BETWEEN 0 AND 2
+              UNION ALL
+              SELECT * FROM water_z3
+              WHERE z(!scale_denominator!) BETWEEN 3 AND 4 AND scalerank-1 <= z(!scale_denominator!)
+              UNION ALL
+              SELECT * FROM water_z5
+              WHERE z(!scale_denominator!) >= 5 AND scalerank-1 <= z(!scale_denominator!)
+          ) AS urban_areas
+          WHERE geom && !bbox!
         ) AS data
       type: postgis
       user: naturalearth
@@ -154,33 +109,18 @@ Layer:
       max_size: 512
       port: 5432
       table: |-
-        ( -- Glaciated areas
-          SELECT geom, 'glacier' AS type
-          FROM ne_110m_glaciated_areas
-          WHERE z(!scale_denominator!) <= 2
-            AND geom && !bbox!
-          UNION ALL
-          SELECT geom, 'glacier' AS type
-          FROM ne_50m_glaciated_areas
-          WHERE z(!scale_denominator!) IN (3,4)
-            AND geom && !bbox!
-          UNION ALL
-          SELECT geom, 'glacier' AS type
-          FROM ne_10m_glaciated_areas
-          WHERE z(!scale_denominator!) >= 5
-            AND geom && !bbox!
-          UNION ALL
-          -- Antarctic ice shelves
-          -- No 110m version is available
-          SELECT geom, 'ice_shelf' AS type
-          FROM ne_50m_antarctic_ice_shelves_polys
-          WHERE z(!scale_denominator!) IN (3,4)
-            AND geom && !bbox!
-          UNION ALL
-          SELECT geom, 'ice_shelf' AS type
-          FROM ne_10m_antarctic_ice_shelves_polys
-          WHERE z(!scale_denominator!) >= 5
-            AND geom && !bbox!
+        ( SELECT geom, type
+          FROM (
+              SELECT * FROM ice_z2
+              WHERE z(!scale_denominator!) = 2
+              UNION ALL
+              SELECT * FROM ice_z3
+              WHERE z(!scale_denominator!) BETWEEN 3 AND 4
+              UNION ALL
+              SELECT * FROM ice_z5
+              WHERE z(!scale_denominator!) >= 5
+          ) AS ice
+          WHERE geom && !bbox!
         ) AS data
       type: postgis
       user: naturalearth
@@ -251,120 +191,11 @@ Layer:
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: geographic_lines
-    Datasource: 
-      dbname: naturalearth
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: ''
-      geometry_table: ''
-      host: postgres
-      key_field: ''
-      max_size: 512
-      port: 5432
-      table: |-
-        ( SELECT name, featurecla, geom
-          FROM ne_110m_geographic_lines
-          WHERE z(!scale_denominator!) <= 2 AND geom && !bbox!
-          UNION ALL
-          SELECT name, featurecla, geom
-          FROM ne_50m_geographic_lines
-          WHERE z(!scale_denominator!) IN (3,4) AND geom && !bbox!
-          UNION ALL
-          SELECT name, featurecla, geom
-          FROM ne_10m_geographic_lines
-          WHERE z(!scale_denominator!) >= 5 AND geom && !bbox!
-        ) AS data
-      type: postgis
-      user: naturalearth
-      password: naturalearth
-    description: ''
-    fields: 
-      featurecla: String
-      name: String
-    properties: 
-      "buffer-size": 8
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: admin_1_lines
-    Datasource: 
-      dbname: naturalearth
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: ''
-      geometry_table: ''
-      host: postgres
-      key_field: ''
-      max_size: 512
-      port: 5432
-      table: |-
-        ( SELECT geom, featurecla
-          FROM ne_50m_admin_1_states_provinces_lines
-          WHERE z(!scale_denominator!) IN (3,4) AND geom && !bbox!
-          UNION ALL
-          SELECT geom, featurecla
-          FROM ne_10m_admin_1_states_provinces_lines_shp
-          WHERE z(!scale_denominator!) >= 5 AND geom && !bbox!
-        ) AS data
-      type: postgis
-      user: naturalearth
-      password: naturalearth
-    description: State & province boundaries
-    fields: 
-      featurecla: String
-    properties: 
-      "buffer-size": 0
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: admin_0_lines
-    Datasource: 
-      dbname: naturalearth
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: ''
-      geometry_table: ''
-      host: postgres
-      key_field: ''
-      max_size: 512
-      port: 5432
-      table: |-
-        ( SELECT geom, 'Land' AS type, CASE
-            WHEN featurecla ILIKE 'line of control%' THEN 'control'
-            WHEN featurecla ILIKE 'disputed%' THEN 'dispute'
-            WHEN featurecla ILIKE 'lease%' THEN 'lease'
-            WHEN featurecla ILIKE 'overlay%' THEN 'overlay'
-            ELSE 'boundary' END AS class
-          FROM ne_110m_admin_0_boundary_lines_land
-          WHERE z(!scale_denominator!) <= 2 AND geom && !bbox!
-          UNION ALL
-          SELECT geom, 'Land' AS type, CASE
-            WHEN featurecla ILIKE 'line of control%' THEN 'control'
-            WHEN featurecla ILIKE 'disputed%' THEN 'dispute'
-            WHEN featurecla ILIKE 'lease%' THEN 'lease'
-            WHEN featurecla ILIKE 'overlay%' THEN 'overlay'
-            ELSE 'boundary' END AS class
-          FROM ne_50m_admin_0_boundary_lines_land
-          WHERE z(!scale_denominator!) IN (3,4) AND geom && !bbox!
-          UNION ALL
-          SELECT geom, type, CASE
-            WHEN featurecla ILIKE 'line of control%' THEN 'control'
-            WHEN featurecla ILIKE 'disputed%' THEN 'dispute'
-            WHEN featurecla ILIKE 'lease%' THEN 'lease'
-            WHEN featurecla ILIKE 'overlay%' THEN 'overlay'
-            ELSE 'boundary' END AS class
-          FROM ne_10m_admin_0_boundary_lines_land
-          WHERE z(!scale_denominator!) >= 5 AND geom && !bbox!
-        ) AS data
-      type: postgis
-      user: naturalearth
-      password: naturalearth
-    description: Country boundaries
-    fields: 
-      class: String
-      type: String
-    properties: 
-      "buffer-size": 0
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
   - id: country_labels
     Datasource: 
       dbname: naturalearth
       extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: geom_point
+      geometry_field: geom
       geometry_table: ''
       host: postgres
       key_field: ''
@@ -392,127 +223,29 @@ Layer:
     Datasource: 
       dbname: naturalearth
       extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: geom_point
+      geometry_field: geom
       geometry_table: ''
       host: postgres
       key_field: ''
       max_size: 512
       port: 5432
       table: |-
-        ( SELECT geom_point, name
-          FROM ne_50m_admin_1_states_provinces_shp
-          WHERE geom && !bbox! AND z(!scale_denominator!) IN (3,4)
-          UNION ALL
-          SELECT ST_PointOnSurface(geom) AS geom1, name
-          FROM ne_10m_admin_1_states_provinces_shp
-          WHERE geom && !bbox! AND z(!scale_denominator!) >= 5
-        ) AS data
-      type: postgis
-      user: naturalearth
-      password: naturalearth
-    description: ''
-    fields: 
-      name: String
-    properties: 
-      "buffer-size": 128
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: land_ocean_labels
-    Datasource: 
-      dbname: naturalearth
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: ''
-      geometry_table: ''
-      host: postgres
-      key_field: ''
-      max_size: 512
-      port: 5432
-      table: |-
-        ( SELECT *
-          FROM ne_10m_land_ocean_label_points
-          WHERE geom && !bbox! AND CASE
-            WHEN z(!scale_denominator!) >= 3 AND scalerank <= 1 THEN TRUE
-            WHEN z(!scale_denominator!) >= 4 AND scalerank <= 2 THEN TRUE
-            WHEN z(!scale_denominator!) >= 5 AND scalerank <= 3 THEN TRUE
-            WHEN z(!scale_denominator!) >= 6 AND scalerank <= 4 THEN TRUE
-            WHEN z(!scale_denominator!) >= 7 THEN TRUE
-            END
-        ) AS data
-      type: postgis
-      user: naturalearth
-      password: naturalearth
-    description: ''
-    fields: 
-      featurecla: String
-      ogc_fid: Number
-      scalerank: Number
-    properties: 
-      "buffer-size": 128
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: places
-    Datasource: 
-      dbname: naturalearth
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: ''
-      geometry_table: ''
-      host: postgres
-      key_field: ''
-      max_size: 512
-      port: 5432
-      table: |-
-        ( SELECT geom, name, scalerank
-          FROM ne_10m_populated_places
-          WHERE geom && !bbox! AND CASE
-          	WHEN z(!scale_denominator!) >= 3 AND scalerank = 0 THEN TRUE
-          	WHEN z(!scale_denominator!) >= 4 AND scalerank <= 2 THEN TRUE
-          	WHEN z(!scale_denominator!) >= 5 AND scalerank <= 4 THEN TRUE
-          	WHEN z(!scale_denominator!) >= 6 AND scalerank <= 6 THEN TRUE
-          	WHEN z(!scale_denominator!) >= 7 THEN TRUE
-            END
-          -- Ordering the query properly is important. Points that are selected
-          -- first are given priority for labeling.
-          ORDER BY scalerank ASC, pop_max DESC
-        ) AS data
-      type: postgis
-      user: naturalearth
-      password: naturalearth
-    description: Points for labeling cities and towns
-    fields: 
-      name: String
-      scalerank: Number
-    properties: 
-      "buffer-size": 128
-    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
-  - id: ports
-    Datasource: 
-      dbname: naturalearth
-      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
-      geometry_field: ''
-      geometry_table: ''
-      host: postgres
-      key_field: ''
-      max_size: 512
-      port: 5432
-      table: |-
-        ( SELECT * FROM ne_10m_ports
+        ( SELECT topoint(geom) AS geom, name
+          FROM (
+              SELECT * FROM state_labels_z3 WHERE z(!scale_denominator!) BETWEEN 3 AND 4
+              UNION ALL
+              SELECT * FROM state_labels_z5 WHERE z(!scale_denominator!) >= 5
+          ) AS states
           WHERE geom && !bbox!
-            AND CASE
-              WHEN z(!scale_denominator!) = 5 AND scalerank <= 3 THEN TRUE
-              WHEN z(!scale_denominator!) = 6 AND scalerank <= 5 THEN TRUE
-              WHEN z(!scale_denominator!) >= 7 THEN TRUE END
         ) AS data
       type: postgis
       user: naturalearth
       password: naturalearth
     description: ''
-    fields: 
-      featurecla: String
+    fields:
       name: String
-      natlscale: Number
-      ogc_fid: Number
-      scalerank: Number
-      website: String
     properties: 
-      "buffer-size": 8
+      "buffer-size": 128
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
 maxzoom: 7
 minzoom: 0

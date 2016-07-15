@@ -21,7 +21,3 @@ export-vectortiles:
    - ./src/vector-datasource:/tm2source
   links:
    - natural-earth-postgis:postgres
-  environment:
-    BBOX: "5.8559113 45.717995 10.5922941 47.9084648"
-    MIN_ZOOM: "10"
-    MAX_ZOOM: "10"

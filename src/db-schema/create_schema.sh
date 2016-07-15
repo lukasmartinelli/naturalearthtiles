@@ -19,6 +19,11 @@ function main() {
     exec_psql_file "layers/railroads.sql"
     exec_psql_file "layers/roads.sql"
     exec_psql_file "layers/country_labels.sql"
+    exec_psql_file "layers/state_labels.sql"
+    exec_psql_file "layers/playas.sql"
+    exec_psql_file "layers/urban_areas.sql"
+    exec_psql_file "layers/water.sql"
+    exec_psql_file "layers/ice.sql"
 }
 
 main
