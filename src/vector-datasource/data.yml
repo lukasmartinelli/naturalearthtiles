@@ -1,6 +1,8 @@
 _prefs: 
   disabled: []
   inspector: false
+  mapid: ''
+  rev: ''
   saveCenter: false
 attribution: ''
 center: 
@@ -17,8 +19,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT geom, name
           FROM (
@@ -30,7 +35,6 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: 
       name: String
@@ -45,8 +49,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT geom
           FROM (
@@ -60,7 +67,6 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: {}
     properties: 
@@ -74,8 +80,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT geom
           FROM (
@@ -92,7 +101,6 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: Ocean and lake polygons
     fields: {}
     properties: 
@@ -106,8 +114,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT geom, type
           FROM (
@@ -124,7 +135,6 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: 
       type: "One of: 'glacier', 'ice_shelf'"
@@ -139,8 +149,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT geom
           FROM (
@@ -154,7 +167,6 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: {}
     properties: 
@@ -168,8 +180,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT geom
           FROM (
@@ -185,7 +200,6 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: Highway, major road, and ferry route lines
     fields: {}
     properties: 
@@ -199,10 +213,13 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
-        ( SELECT geom
+        ( SELECT *
           FROM (
             SELECT * FROM country_label_z3 WHERE z(!scale_denominator!) BETWEEN 3 AND 4
             UNION ALL
@@ -212,13 +229,9 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: 
-      abbrev: String
-      iso_a2: String
-      iso_a3: String
-      labelrank: Number
+      abbreviation: String
       name: String
       scalerank: Number
     properties: 
@@ -232,8 +245,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT topoint(geom) AS geom, name
           FROM (
@@ -245,9 +261,8 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
-    fields:
+    fields: 
       name: String
     properties: 
       "buffer-size": 128
@@ -260,8 +275,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT *
           FROM (
@@ -279,7 +297,6 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: 
       featurecla: String
@@ -296,8 +313,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT *
           FROM (
@@ -316,11 +336,101 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: Points for labeling cities and towns
     fields: 
+      adm0_a3: String
+      adm0cap: Number
+      adm0name: String
+      adm1name: String
+      admin1_cod: Number
+      capalt: Number
+      capin: String
+      changed: Number
+      checkme: Number
+      cityalt: String
+      compare: Number
+      diffascii: Number
+      diffnote: String
+      elevation: Number
+      feature_cl: String
+      feature_co: String
+      featurecla: String
+      geonameid: Number
+      geonamesno: String
+      gn_ascii: String
+      gn_pop: Number
+      gtopo30: Number
+      iso_a2: String
+      labelrank: Number
+      latitude: Number
+      longitude: Number
+      ls_match: Number
+      ls_name: String
+      max_areakm: Number
+      max_areami: Number
+      max_bbxmax: Number
+      max_bbxmin: Number
+      max_bbymax: Number
+      max_bbymin: Number
+      max_natsca: Number
+      max_perkm: Number
+      max_permi: Number
+      max_pop10: Number
+      max_pop20: Number
+      max_pop300: Number
+      max_pop310: Number
+      max_pop50: Number
+      mean_bbxc: Number
+      mean_bbyc: Number
+      megacity: Number
+      meganame: String
+      min_areakm: Number
+      min_areami: Number
+      min_bbxmax: Number
+      min_bbxmin: Number
+      min_bbymax: Number
+      min_bbymin: Number
+      min_perkm: Number
+      min_permi: Number
       name: String
+      namealt: String
+      nameascii: String
+      namediff: Number
+      namepar: String
+      natscale: Number
+      note: String
+      ogc_fid: Number
+      pop1950: Number
+      pop1955: Number
+      pop1960: Number
+      pop1965: Number
+      pop1970: Number
+      pop1975: Number
+      pop1980: Number
+      pop1985: Number
+      pop1990: Number
+      pop1995: Number
+      pop2000: Number
+      pop2005: Number
+      pop2010: Number
+      pop2015: Number
+      pop2020: Number
+      pop2025: Number
+      pop2050: Number
+      pop_max: Number
+      pop_min: Number
+      pop_other: Number
+      rank_max: Number
+      rank_min: Number
       scalerank: Number
+      sov0name: String
+      sov_a3: String
+      timezone: String
+      un_adm0: String
+      un_fid: Number
+      un_lat: Number
+      un_long: Number
+      worldcity: Number
     properties: 
       "buffer-size": 128
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -332,8 +442,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT *
           FROM (
@@ -347,15 +460,19 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: 
+      abbrev: String
       featurecla: String
+      gps_code: String
+      iata_code: String
+      location: String
       name: String
       natlscale: Number
       ogc_fid: Number
       scalerank: Number
-      website: String
+      type: String
+      wikipedia: String
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -367,8 +484,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT *
           FROM (
@@ -382,7 +502,6 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: 
       featurecla: String
@@ -402,8 +521,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT *
           FROM (
@@ -417,11 +539,15 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: ''
     fields: 
+      abbrev: String
       featurecla: String
       name: String
+      name_long: String
+      note: String
+      ogc_fid: Number
+      scalerank: Number
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -433,8 +559,11 @@ Layer:
       geometry_table: ''
       host: postgres
       key_field: ''
+      key_field_as_attribute: ''
       max_size: 512
+      password: naturalearth
       port: 5432
+      srid: ''
       table: |-
         ( SELECT *
           FROM (
@@ -448,10 +577,10 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-      password: naturalearth
     description: Country, state and province boundaries
     fields: 
-      featurecla: String
+      admin_level: Number
+      class: String
     properties: 
       "buffer-size": 0
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
