@@ -2,7 +2,7 @@
 Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients.
 *Currently in heavy development*
 
-[**:open_file_folder: Download the vector tiles from the releases page**](https://github.com/lukasmartinelli/postgis-editor/releases/latest).
+[**:open_file_folder: Download the vector tiles from the releases page**](https://github.com/lukasmartinelli/natural-earth-vector-tiles/releases/latest).
 
 ![Mapbox GL visualization of Natural Earth vector tiles](demo.gif)
 
