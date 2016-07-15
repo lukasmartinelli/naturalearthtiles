@@ -30,6 +30,7 @@ function main() {
     exec_psql_file "layers/geographic_lines.sql"
     exec_psql_file "layers/admin.sql"
     exec_psql_file "layers/airport_labels.sql"
+    exec_psql_file "layers/river.sql"
 }
 
 main
