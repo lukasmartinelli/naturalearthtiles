@@ -28,6 +28,7 @@ function main() {
     exec_psql_file "layers/place_labels.sql"
     exec_psql_file "layers/port_labels.sql"
     exec_psql_file "layers/geographic_lines.sql"
+    exec_psql_file "layers/admin.sql"
 }
 
 main
