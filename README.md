@@ -1,4 +1,4 @@
-# Natural Earth Vector Tiles [![BSD-3 and ODbL licensed](https://img.shields.io/badge/license-BSD--3/ODbL-blue.svg)](https://github.com/osm2vectortiles/osm2vectortiles#license)
+# Natural Earth Vector Tiles [![BSD-3 and ODbL licensed](https://img.shields.io/badge/license-BSD--3/ODbL-blue.svg)](https://github.com/osm2vectortiles/osm2vectortiles#license) [![Build Status](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles)
 Natural Earth vector tile data set (MVT).
 Prerendered Natural Earth vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients.
 
