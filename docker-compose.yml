@@ -1,0 +1,27 @@
+natural-earth-postgis:
+  image: "lukasmartinelli/natural-earth-postgis"
+  ports:
+   - "5432:5432"
+mapbox-studio:
+  image: "osm2vectortiles/mapbox-studio"
+  volumes:
+   - ./src/vector-datasource:/projects/vector-datasource.tm2source
+  links:
+   - natural-earth-postgis:postgres
+  ports:
+   - "3000:3000"
+db-schema:
+  image: "lukasmartinelli/natural-earth-vector-tiles:db-schema"
+  links:
+   - natural-earth-postgis:postgres
+export-vectortiles:
+  image: "lukasmartinelli/natural-earth-vector-tiles:export-vectortiles"
+  volumes:
+   - ./data:/export
+   - ./src/vector-datasource:/tm2source
+  links:
+   - natural-earth-postgis:postgres
+  environment:
+    BBOX: "5.8559113 45.717995 10.5922941 47.9084648"
+    MIN_ZOOM: "10"
+    MAX_ZOOM: "10"
