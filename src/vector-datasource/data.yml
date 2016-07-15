@@ -491,7 +491,7 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-    description: ''
+    description: 'World wide airports '
     fields: 
       abbrev: String
       featurecla: String
@@ -533,13 +533,13 @@ Layer:
         ) AS data
       type: postgis
       user: naturalearth
-    description: ''
+    description: 'World wide ports '
     fields: 
       featurecla: String
       name: String
       natlscale: Number
       ogc_fid: Number
-      scalerank: Number
+      scalerank: Relative importance
       website: String
     properties: 
       "buffer-size": 8
@@ -574,9 +574,9 @@ Layer:
       user: naturalearth
     description: Country, state and province boundaries
     fields: 
-      admin_level: Number
-      class: String
-      scalerank: Number
+      admin_level: Admin level depending on origin of country or province data set
+      class: Feature class of boundary
+      scalerank: Relative importance
     properties: 
       "buffer-size": 0
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
