@@ -25,6 +25,7 @@ function main() {
     exec_psql_file "layers/water.sql"
     exec_psql_file "layers/ice.sql"
     exec_psql_file "layers/ocean_labels.sql"
+    exec_psql_file "layers/place_labels.sql"
 }
 
 main

@@ -269,7 +269,7 @@ Layer:
               SELECT * FROM ocean_labels_z6 WHERE z(!scale_denominator!) = 6
               UNION ALL
               SELECT * FROM ocean_labels_z7 WHERE z(!scale_denominator!) >= 7
-          ) AS states
+          ) AS ocean_labels
           WHERE geom && !bbox!
         ) AS data
       type: postgis
@@ -279,6 +279,42 @@ Layer:
     fields: 
       featurecla: String
       ogc_fid: Number
+      scalerank: Number
+    properties: 
+      "buffer-size": 128
+    srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
+  - id: places
+    Datasource: 
+      dbname: naturalearth
+      extent: -20037508.34,-20037508.34,20037508.34,20037508.34
+      geometry_field: ''
+      geometry_table: ''
+      host: postgres
+      key_field: ''
+      max_size: 512
+      port: 5432
+      table: |-
+        ( SELECT *
+          FROM (
+              SELECT * FROM place_labels_z3 WHERE z(!scale_denominator!) = 3
+              UNION ALL
+              SELECT * FROM place_labels_z4 WHERE z(!scale_denominator!) = 4
+              UNION ALL
+              SELECT * FROM place_labels_z5 WHERE z(!scale_denominator!) = 5
+              UNION ALL
+              SELECT * FROM place_labels_z6 WHERE z(!scale_denominator!) = 6
+              UNION ALL
+              SELECT * FROM place_labels_z7 WHERE z(!scale_denominator!) >= 7
+          ) AS place_labels
+          WHERE geom && !bbox!
+          ORDER BY scalerank ASC, pop_max DESC
+        ) AS data
+      type: postgis
+      user: naturalearth
+      password: naturalearth
+    description: Points for labeling cities and towns
+    fields: 
+      name: String
       scalerank: Number
     properties: 
       "buffer-size": 128
