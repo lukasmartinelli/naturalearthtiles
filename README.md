@@ -1,13 +1,16 @@
 # Natural Earth Vector Tiles [![BSD-3 and ODbL licensed](https://img.shields.io/badge/license-BSD--3/ODbL-blue.svg)](https://github.com/osm2vectortiles/osm2vectortiles#license)
-Natural Earth vector tile data set (MVT)
+Natural Earth vector tile data set (MVT).
+Prerendered Natural Earth vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients.
 
-Prerendered Natural Earth vector tiles supporting the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients.
+*Currently in heavy development*
 
 ## Download
 
-TODO
+[**Download the vector tiles from the releases page**](https://github.com/lukasmartinelli/postgis-editor/releases/latest).
 
-## Develop
+You can use [**mbview**](https://github.com/mapbox/mbview) to take a look at the MBTiles vector tiles locally.
+
+## Run Workflow
 
 The entire project is structured components using Docker containers
 to work together. Ensure you meet the prerequisites.
@@ -27,7 +30,7 @@ Import the required database schema and helper functions.
 docker-compose run db-schema
 ```
 
-Export the vector tiles.
+Export the vector tiles. The exported vector tiles are stored in `data/natural_earth.mbtiles`.
 
 ```bash
 docker-compose run export-vectortiles
