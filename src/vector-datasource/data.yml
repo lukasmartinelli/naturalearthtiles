@@ -36,8 +36,7 @@ Layer:
       type: postgis
       user: naturalearth
     description: ''
-    fields: 
-      name: String
+    fields: {}
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -68,7 +67,8 @@ Layer:
       type: postgis
       user: naturalearth
     description: ''
-    fields: {}
+    fields: 
+      scalerank: Number
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -234,7 +234,10 @@ Layer:
       type: postgis
       user: naturalearth
     description: Highway, major road, and ferry route lines
-    fields: {}
+    fields: 
+      featureclass: String
+      scalerank: Number
+      type: String
     properties: 
       "buffer-size": 8
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -362,7 +365,6 @@ Layer:
     fields: 
       name: String
       scalerank: Number
-      type: String
     properties: 
       "buffer-size": 128
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -399,99 +401,10 @@ Layer:
       user: naturalearth
     description: Points for labeling cities and towns
     fields: 
-      adm0_a3: String
-      adm0cap: Number
-      adm0name: String
-      adm1name: String
-      admin1_cod: Number
-      capalt: Number
-      capin: String
-      changed: Number
-      checkme: Number
-      cityalt: String
-      compare: Number
-      diffascii: Number
-      diffnote: String
-      elevation: Number
-      feature_cl: String
-      feature_co: String
-      featurecla: String
-      geonameid: Number
-      geonamesno: String
-      gn_ascii: String
-      gn_pop: Number
-      gtopo30: Number
-      iso_a2: String
       labelrank: Number
-      latitude: Number
-      longitude: Number
-      ls_match: Number
-      ls_name: String
-      max_areakm: Number
-      max_areami: Number
-      max_bbxmax: Number
-      max_bbxmin: Number
-      max_bbymax: Number
-      max_bbymin: Number
-      max_natsca: Number
-      max_perkm: Number
-      max_permi: Number
-      max_pop10: Number
-      max_pop20: Number
-      max_pop300: Number
-      max_pop310: Number
-      max_pop50: Number
-      mean_bbxc: Number
-      mean_bbyc: Number
-      megacity: Number
-      meganame: String
-      min_areakm: Number
-      min_areami: Number
-      min_bbxmax: Number
-      min_bbxmin: Number
-      min_bbymax: Number
-      min_bbymin: Number
-      min_perkm: Number
-      min_permi: Number
       name: String
-      namealt: String
-      nameascii: String
-      namediff: Number
-      namepar: String
-      natscale: Number
-      note: String
-      ogc_fid: Number
-      pop1950: Number
-      pop1955: Number
-      pop1960: Number
-      pop1965: Number
-      pop1970: Number
-      pop1975: Number
-      pop1980: Number
-      pop1985: Number
-      pop1990: Number
-      pop1995: Number
-      pop2000: Number
-      pop2005: Number
-      pop2010: Number
-      pop2015: Number
-      pop2020: Number
-      pop2025: Number
-      pop2050: Number
-      pop_max: Number
-      pop_min: Number
-      pop_other: Number
-      rank_max: Number
-      rank_min: Number
+      population: Number
       scalerank: Number
-      sov0name: String
-      sov_a3: String
-      timezone: String
-      un_adm0: String
-      un_fid: Number
-      un_lat: Number
-      un_long: Number
-      worldcity: Number
     properties: 
       "buffer-size": 128
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
@@ -626,17 +539,19 @@ Layer:
       table: |-
         ( SELECT *
           FROM (
-              SELECT * FROM biome_z2 WHERE z(!scale_denominator!) >= 2
+              SELECT * FROM biome_z2 WHERE z(!scale_denominator!) BETWEEN 2 AND 3
+              UNION ALL
+              SELECT * FROM biome_z4 WHERE z(!scale_denominator!) BETWEEN 4 AND 5
+              UNION ALL
+              SELECT * FROM biome_z6 WHERE z(!scale_denominator!) >= 6
           ) AS biome
           WHERE geom && !bbox!
         ) AS data
       type: postgis
       user: naturalearth
-    description: Natural Biomes
+    description: Natural Biomes from the Terrestrial Ecoregions of the World (WWF)
     fields: 
-      admin_level: Admin level depending on origin of country or province data set
-      class: Feature class of boundary
-      scalerank: Relative importance
+      biome: String
     properties: 
       "buffer-size": 0
     srs: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over
