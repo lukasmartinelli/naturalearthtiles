@@ -24,8 +24,8 @@ CREATE OR REPLACE VIEW road_z6 AS (
     WHERE scalerank <= 6
 );
 
-CREATE OR REPLACE VIEW road_z7_z14 AS (
+CREATE OR REPLACE VIEW road_z7 AS (
     SELECT *
     FROM ne_10m_global_roads
-    WHERE scalerank = 7
+    WHERE scalerank <= 7
 );

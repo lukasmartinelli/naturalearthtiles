@@ -194,7 +194,7 @@ Layer:
             UNION ALL
             SELECT * FROM railroad_z6 WHERE z(!scale_denominator!) = 6
             UNION ALL
-            SELECT * FROM railroad_z7_z14 WHERE z(!scale_denominator!) BETWEEN 7 AND 14
+            SELECT * FROM railroad_z7 WHERE z(!scale_denominator!) >= 7
           ) AS railroad
           WHERE geom && !bbox!
         ) AS data
@@ -227,7 +227,7 @@ Layer:
             UNION ALL
             SELECT * FROM road_z6 WHERE z(!scale_denominator!) = 6
             UNION ALL
-            SELECT * FROM road_z7_z14 WHERE z(!scale_denominator!) BETWEEN 7 AND 14
+            SELECT * FROM road_z7 WHERE z(!scale_denominator!) >= 7
           ) AS road
           WHERE geom && !bbox!
         ) AS data
@@ -539,11 +539,15 @@ Layer:
       table: |-
         ( SELECT *
           FROM (
+              SELECT * FROM biome_z0 WHERE z(!scale_denominator!) BETWEEN 0 AND 1
+              UNION ALL
               SELECT * FROM biome_z2 WHERE z(!scale_denominator!) BETWEEN 2 AND 3
               UNION ALL
               SELECT * FROM biome_z4 WHERE z(!scale_denominator!) BETWEEN 4 AND 5
               UNION ALL
-              SELECT * FROM biome_z6 WHERE z(!scale_denominator!) >= 6
+              SELECT * FROM biome_z6 WHERE z(!scale_denominator!) = 6
+              UNION ALL
+              SELECT * FROM biome_z7 WHERE z(!scale_denominator!) >= 7
           ) AS biome
           WHERE geom && !bbox!
         ) AS data

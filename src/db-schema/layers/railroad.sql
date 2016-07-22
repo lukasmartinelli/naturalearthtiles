@@ -10,8 +10,8 @@ CREATE OR REPLACE VIEW railroad_z6 AS (
     WHERE scalerank <= 6
 );
 
-CREATE OR REPLACE VIEW railroad_z7_z14 AS (
+CREATE OR REPLACE VIEW railroad_z7 AS (
     SELECT geom
     FROM ne_10m_railroads
-    WHERE scalerank = 7
+    WHERE scalerank <= 7
 );
