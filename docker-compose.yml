@@ -15,7 +15,7 @@ db-schema:
   links:
    - natural-earth-postgis:postgres
 import-wwf:
-  build: "src/import-wwf"
+  image: "lukasmartinelli/natural-earth-vector-tiles:import-wwf"
   links:
    - natural-earth-postgis:postgres
 export-vectortiles:

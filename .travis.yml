@@ -7,5 +7,6 @@ before_install:
 script:
   - docker-compose up -d natural-earth-postgis
   - sleep 300
+  - docker-compose run import-wwf
   - docker-compose run db-schema
   - docker-compose run -e "BBOX=5.8559113 45.717995 10.5922941 47.9084648" export-vectortiles
