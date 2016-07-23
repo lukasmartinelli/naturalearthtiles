@@ -1,11 +1,13 @@
 # Natural Earth Vector Tiles [![BSD-3 and ODbL licensed](https://img.shields.io/badge/license-BSD--3/ODbL-blue.svg)](https://github.com/osm2vectortiles/osm2vectortiles#license) [![Build Status](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles)
-Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients. Raster tiles for [Natural Earth II](http://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-2/) and [Natural Earth II with shaded relief](http://www.naturalearthdata.com/downloads/10m-raster-data/10m-shaded-relief/) are included as well.
+Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients. Raster tiles for [Natural Earth II with shaded relief](http://www.naturalearthdata.com/downloads/10m-raster-data/10m-shaded-relief/) are included as well.
 
 [**:open_file_folder: Download the vector and raster tiles from the releases page**](https://github.com/lukasmartinelli/natural-earth-vector-tiles/releases/latest).
 
-![Mapbox GL visualization of Natural Earth vector tiles](demo.gif)
+Using the prerendered vector tiles and raster tiles from Natural Earth you are able to create **high quality low zoom level maps**
+which are ideal for global data visualizations or as basis for your own local base map.
+For high zoom level vector tiles please checkout our project to [create vector tiles from Open Street Map](http://osm2vectortiles.org).
 
-Please also checkout our project to [create vector tiles from Open Street Map](http://osm2vectortiles.org).
+![Mapbox GL visualization of Natural Earth vector tiles](demo.gif)
 
 ## Use Vector Tiles
 
@@ -59,9 +61,16 @@ in a Docker container and visit `localhost:3000`.
 docker-compose up mapbox-studio
 ```
 
+Export the raster tiles from the Natural Earth II raster data source.
+The exported raster tiles are stored in `data/natural_earth_2_raster.mbtiles`.
+
+```bash
+docker-compose run export-vectortiles
+```
+
 ## License
 
-The produced vector tiles are licensed under the [Open Database License](http://wiki.openstreetmap.org/wiki/Open_Database_License)
+The produced tiles are licensed under the [Open Database License](http://wiki.openstreetmap.org/wiki/Open_Database_License)
 and are made with data originating from [Natural Earth](http://www.naturalearthdata.com/).
 
 The source code is Copyright (c) Lukas Martinelli under BSD-3 as defined in [License](LICENSE).

@@ -1,0 +1,25 @@
+_prefs:
+  disabled: []
+  inspector: false
+  mapid: ''
+  rev: ''
+  saveCenter: true
+attribution: ''
+center:
+  - -16.1719
+  - 52.8028
+  - 2
+description: 'Natural Earth II raster tiles from https://github.com/lukasmartinelli/natural-earth-vector-tiles'
+Layer:
+  - id: ne2_hr_lc_sr
+    Datasource:
+      file: /import/NE2_HR_LC_SR.tif
+      type: gdal
+    description: 'Coloring based on idealized land cover (with shaded relief)'
+    fields: {}
+    properties:
+      "buffer-size": 0
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+maxzoom: 6
+minzoom: 0
+name: Natural Earth II with Shaded Relief

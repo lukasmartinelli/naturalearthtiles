@@ -1,6 +1,6 @@
 .PHONY: all
 
-all: export-vectortiles db-schema import-wwf import-naturalearth
+all: export-vectortiles db-schema import-wwf import-naturalearth export-rastertiles
 
 export-vectortiles:
 	docker build -t lukasmartinelli/natural-earth-vector-tiles:export-vectortiles src/export-vectortiles
@@ -13,3 +13,6 @@ import-wwf:
 
 import-naturalearth:
 	docker build -t lukasmartinelli/natural-earth-vector-tiles:import-naturalearth src/import-naturalearth
+
+export-rastertiles: export-vectortiles
+	docker build -t lukasmartinelli/natural-earth-vector-tiles:export-rastertiles src/export-rastertiles
