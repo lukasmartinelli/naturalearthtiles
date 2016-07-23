@@ -1,27 +1,35 @@
-natural-earth-postgis:
-  image: "lukasmartinelli/natural-earth-postgis"
+postgres:
+  image: "mdillon/postgis:9.5"
   ports:
    - "5432:5432"
+  environment:
+    POSTGRES_DB: naturalearth
+    POSTGRES_USER: naturalearth
+    POSTGRES_PASSWORD: naturalearth
 mapbox-studio:
   image: "osm2vectortiles/mapbox-studio"
   volumes:
    - ./src/vector-datasource:/projects/vector-datasource.tm2source
   links:
-   - natural-earth-postgis:postgres
+   - postgres:postgres
   ports:
    - "3000:3000"
 db-schema:
   image: "lukasmartinelli/natural-earth-vector-tiles:db-schema"
   links:
-   - natural-earth-postgis:postgres
+   - postgres:postgres
+import-naturalearth:
+  image: "lukasmartinelli/natural-earth-vector-tiles:import-naturalearth"
+  links:
+   - postgres:postgres
 import-wwf:
   image: "lukasmartinelli/natural-earth-vector-tiles:import-wwf"
   links:
-   - natural-earth-postgis:postgres
+   - postgres:postgres
 export-vectortiles:
   image: "lukasmartinelli/natural-earth-vector-tiles:export-vectortiles"
   volumes:
    - ./data:/export
    - ./src/vector-datasource:/tm2source
   links:
-   - natural-earth-postgis:postgres
+   - postgres:postgres

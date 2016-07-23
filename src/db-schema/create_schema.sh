@@ -5,7 +5,7 @@ set -o nounset
 
 function exec_psql_file() {
     local file_name="$1"
-    PG_PASSWORD="naturalearth" psql \
+    PGPASSWORD="naturalearth" psql \
         -v ON_ERROR_STOP=1 \
         --host="postgres" \
         --port=5432 \
