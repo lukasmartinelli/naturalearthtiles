@@ -10,6 +10,8 @@ mapbox-studio:
   image: "osm2vectortiles/mapbox-studio"
   volumes:
    - ./src/vector-datasource:/projects/vector-datasource.tm2source
+  volumes_from:
+   - raster-datasource
   links:
    - postgres:postgres
   ports:
@@ -26,6 +28,10 @@ import-wwf:
   image: "lukasmartinelli/natural-earth-vector-tiles:import-wwf"
   links:
    - postgres:postgres
+raster-datasource:
+  image: "lukasmartinelli/natural-earth-vector-tiles:raster-datasource"
+  volumes:
+   - /projects/raster-datasource.tm2source
 export-vectortiles:
   image: "lukasmartinelli/natural-earth-vector-tiles:export-vectortiles"
   volumes:
@@ -35,7 +41,7 @@ export-vectortiles:
    - postgres:postgres
 export-rastertiles:
   image: "lukasmartinelli/natural-earth-vector-tiles:export-rastertiles"
+  volumes_from:
+   - raster-datasource
   volumes:
-   - /import
    - ./data:/export
-   - ./src/raster-datasource:/tm2source

@@ -13,7 +13,7 @@ description: 'Natural Earth II raster tiles from https://github.com/lukasmartine
 Layer:
   - id: ne2_hr_lc_sr
     Datasource:
-      file: /import/NE2_HR_LC_SR.tif
+      file: ./NE2_HR_LC_SR.tif
       type: gdal
     description: 'Coloring based on idealized land cover (with shaded relief)'
     fields: {}
