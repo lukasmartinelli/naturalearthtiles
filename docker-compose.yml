@@ -33,3 +33,7 @@ export-vectortiles:
    - ./src/vector-datasource:/tm2source
   links:
    - postgres:postgres
+export-rastertiles:
+  build: "src/export-rastertiles"
+  volumes:
+   - ./data:/export
