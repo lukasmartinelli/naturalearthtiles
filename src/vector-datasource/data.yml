@@ -267,7 +267,9 @@ Layer:
       user: naturalearth
     description: ''
     fields: 
-      abbreviation: String
+      abbrev: String
+      iso_a3: String
+      labelrank: Number
       name: String
       scalerank: Number
     properties: 
@@ -555,6 +557,7 @@ Layer:
       user: naturalearth
     description: Natural Biomes from the Terrestrial Ecoregions of the World (WWF)
     fields: 
+      area_km2: Number
       biome: String
     properties: 
       "buffer-size": 0

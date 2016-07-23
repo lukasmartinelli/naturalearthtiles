@@ -21,36 +21,40 @@ END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
 CREATE OR REPLACE VIEW wwf_biome AS (
-    SELECT geom, biome_type(biome::int) AS biome
+    SELECT geom, area_km2, biome_type(biome::int) AS biome
     FROM wwf_terr_ecos
     WHERE biome IS NOT NULL
 );
 
 DROP TABLE IF EXISTS biome_gen0 CASCADE;
 CREATE TABLE biome_gen0 AS (
-    SELECT ST_SimplifyPreserveTopology(geom, 500) AS geom, biome
+    SELECT ST_SimplifyPreserveTopology(geom, 500) AS geom, area_km2, biome
     FROM wwf_biome
+    WHERE area_km2 >= 4500
 );
 CREATE INDEX biome_gen0_geom_idx ON biome_gen0 USING gist(geom);
 
 DROP TABLE IF EXISTS biome_gen1 CASCADE;
 CREATE TABLE biome_gen1 AS (
-    SELECT ST_SimplifyPreserveTopology(geom, 5000) AS geom, biome
+    SELECT ST_SimplifyPreserveTopology(geom, 5000) AS geom, area_km2, biome
     FROM wwf_biome
+    WHERE area_km2 >= 10000
 );
 CREATE INDEX biome_gen1_geom_idx ON biome_gen1 USING gist(geom);
 
 DROP TABLE IF EXISTS biome_gen2 CASCADE;
 CREATE TABLE biome_gen2 AS (
-    SELECT ST_SimplifyPreserveTopology(geom, 20000) AS geom, biome
+    SELECT ST_SimplifyPreserveTopology(geom, 20000) AS geom, area_km2, biome
     FROM wwf_biome
+    WHERE area_km2 >= 30000
 );
 CREATE INDEX biome_gen2_geom_idx ON biome_gen2 USING gist(geom);
 
 DROP TABLE IF EXISTS biome_gen3 CASCADE;
 CREATE TABLE biome_gen3 AS (
-    SELECT ST_SimplifyPreserveTopology(geom, 40000) AS geom, biome
+    SELECT ST_SimplifyPreserveTopology(geom, 60000) AS geom, area_km2, biome
     FROM wwf_biome
+    WHERE area_km2 >= 100000
 );
 CREATE INDEX biome_gen3_geom_idx ON biome_gen3 USING gist(geom);
 
@@ -71,6 +75,6 @@ CREATE OR REPLACE VIEW biome_z6 AS (
 );
 
 CREATE OR REPLACE VIEW biome_z7 AS (
-    SELECT geom, biome
+    SELECT geom, area_km2, biome
     FROM wwf_biome
 );
