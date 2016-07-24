@@ -14,7 +14,9 @@
     "pitch": 0,
     "sources": {
         "ne_2_hr_lc_sr": {
-            "url": "http://naturalearthtiles.org/tiles/natural_earth_2.raster/metadata.json",
+            "tiles": [
+                "http://naturalearthtiles.org/tiles/natural_earth_2.raster/{x}/{y}/{z}.webp"
+            ],
             "type": "raster"
         }
     },
