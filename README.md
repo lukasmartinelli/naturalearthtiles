@@ -1,10 +1,10 @@
 # Natural Earth Vector and Raster Tiles [![BSD-3 and PDDL licensed](https://img.shields.io/badge/license-BSD--3/PDDL-blue.svg)](https://github.com/lukasmartinelli/naturalearthtiles#license) [![Build Status](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles)
 
-Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients. Raster tiles for [Natural Earth II with shaded relief](http://www.naturalearthdata.com/downloads/10m-raster-data/10m-shaded-relief/) are included as well.
+Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients as well as raster tiles for the [1:10m raster files](http://www.naturalearthdata.com/downloads/10m-raster-data/).
 
 [**:open_file_folder: Download the vector and raster tiles from the releases page**](https://github.com/lukasmartinelli/natural-earth-vector-tiles/releases/latest).
 
-Using the prerendered vector tiles and raster tiles from Natural Earth you are able to create **high quality low zoom level maps**.
+Using the prerendered vector and raster tiles from Natural Earth you are able to create **high quality low zoom level maps**.
 
 ![Mapbox GL visualization of Natural Earth vector tiles](demo.gif)
 
@@ -29,6 +29,8 @@ to work together. Ensure you meet the prerequisites.
 - Install [Docker](https://docs.docker.com/engine/installation/)
 - Install [Docker Compose](https://docs.docker.com/compose/install/)
 
+By default you will use the containers published to [DockerHub](https://hub.docker.com/u/naturalearthtiles/).
+You can also build the containers yourself with `make`.
 Start up the PostgreSQL database with the PostGIS extension.
 
 ```bash
