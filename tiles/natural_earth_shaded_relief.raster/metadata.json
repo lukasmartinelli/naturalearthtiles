@@ -1,0 +1,8 @@
+{
+    "center": "-16.1719,52.8028,2", 
+    "format": "webp", 
+    "description": "Natural Earth Raster Data from naturalearthtiles.org. The raster files register precisely with the 10m vector data.", 
+    "minzoom": "0", 
+    "maxzoom": "6", 
+    "name": "Natural Earth Raster"
+}
