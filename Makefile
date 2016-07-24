@@ -3,16 +3,16 @@
 all: export-vectortiles db-schema import-wwf import-naturalearth raster-datasource
 
 export-vectortiles:
-	docker build -t lukasmartinelli/natural-earth-vector-tiles:export-vectortiles src/export-vectortiles
+	docker build -t naturalearthtiles/export-vectortiles src/export-vectortiles
 
 db-schema:
-	docker build -t lukasmartinelli/natural-earth-vector-tiles:db-schema src/db-schema
+	docker build -t naturalearthtiles/db-schema src/db-schema
 
 import-wwf:
-	docker build -t lukasmartinelli/natural-earth-vector-tiles:import-wwf src/import-wwf
+	docker build -t naturalearthtiles/import-wwf src/import-wwf
 
 import-naturalearth:
-	docker build -t lukasmartinelli/natural-earth-vector-tiles:import-naturalearth src/import-naturalearth
+	docker build -t naturalearthtiles/import-naturalearth src/import-naturalearth
 
 raster-datasource:
-	docker build -t lukasmartinelli/natural-earth-vector-tiles:raster-datasource src/raster-datasource
+	docker build -t naturalearthtiles/raster-datasource src/raster-datasource

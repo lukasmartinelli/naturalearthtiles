@@ -1,4 +1,7 @@
-# Natural Earth Vector Tiles [![BSD-3 and ODbL licensed](https://img.shields.io/badge/license-BSD--3/ODbL-blue.svg)](https://github.com/osm2vectortiles/osm2vectortiles#license) [![Build Status](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles)
+# Natural Earth Vector and Raster Tiles [![BSD-3 and PDDL
+licensed](https://img.shields.io/badge/license-BSD--3/PDDL-blue.svg)](https://github.com/osm2vectortiles/osm2vectortiles#license)
+[![Build
+Status](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles)
 Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients. Raster tiles for [Natural Earth II with shaded relief](http://www.naturalearthdata.com/downloads/10m-raster-data/10m-shaded-relief/) are included as well.
 
 [**:open_file_folder: Download the vector and raster tiles from the releases page**](https://github.com/lukasmartinelli/natural-earth-vector-tiles/releases/latest).
@@ -65,8 +68,6 @@ The raster tiles are exported directly from Mapbox Studio from the `raster-datas
 
 ## License
 
-The produced tiles are licensed under the [Open Database License](http://wiki.openstreetmap.org/wiki/Open_Database_License)
-and are made with data originating from [Natural Earth](http://www.naturalearthdata.com/).
+The produced vector and raster tiles are made available under the Public Domain Dedication and License v1.0 whose full text can be found at: http://www.opendatacommons.org/licenses/pddl/1.0/.
 
-The source code is Copyright (c) Lukas Martinelli under BSD-3 as defined in [License](LICENSE).
-The vector data source in `src/vector-data-source` is partially derived from [mapbox/natural-earth-tm2](https://github.com/mapbox/natural-earth-tm2) and therefore retains Copyright (c) Mapbox under BSD-3 as defined in [License](src/vector-data-source/LICENSE.md).
+The source code is Copyright (c) Lukas Martinelli under BSD-3 as defined in [License](LICENSE). The vector data source in `src/vector-data-source` is partially derived from [mapbox/natural-earth-tm2](https://github.com/mapbox/natural-earth-tm2) and therefore retains Copyright (c) Mapbox under BSD-3 as defined in [License](src/vector-data-source/LICENSE.md).
