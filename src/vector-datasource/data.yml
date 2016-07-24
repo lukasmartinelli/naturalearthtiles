@@ -86,17 +86,20 @@ Layer:
       port: 5432
       srid: ''
       table: |-
-        ( SELECT geom
+        ( SELECT *
           FROM (
               SELECT * FROM water_z0
-              WHERE z(!scale_denominator!) BETWEEN 0 AND 2
+              WHERE z(!scale_denominator!) = 0
               UNION ALL
-              SELECT * FROM water_z3
-              WHERE z(!scale_denominator!) BETWEEN 3 AND 4 AND scalerank-1 <= z(!scale_denominator!)
+              SELECT * FROM water_z1
+              WHERE z(!scale_denominator!) = 1
               UNION ALL
-              SELECT * FROM water_z5
-              WHERE z(!scale_denominator!) >= 5 AND scalerank-1 <= z(!scale_denominator!)
-          ) AS urban_areas
+              SELECT * FROM water_z2
+              WHERE z(!scale_denominator!) BETWEEN 2 AND 3
+              UNION ALL
+              SELECT * FROM water_z4
+              WHERE z(!scale_denominator!) >= 4
+          ) AS water
           WHERE geom && !bbox!
         ) AS data
       type: postgis
