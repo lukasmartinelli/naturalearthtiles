@@ -24,10 +24,6 @@ import-naturalearth:
   image: "naturalearthtiles/import-naturalearth"
   links:
    - postgres:postgres
-import-wwf:
-  image: "naturalearthtiles/import-wwf"
-  links:
-   - postgres:postgres
 raster-datasource:
   image: "naturalearthtiles/raster-datasource"
   volumes:

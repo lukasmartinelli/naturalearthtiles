@@ -37,11 +37,10 @@ Start up the PostgreSQL database with the PostGIS extension.
 docker-compose up -d postgres
 ```
 
-Now import the Natural Earth and WWF data set (can take several minutes).
+Now import the Natural Earth data set (can take several minutes).
 
 ```bash
 docker-compose run import-naturalearth
-docker-compose run import-wwf
 ```
 
 Import the required database schema (views, prepared tables and helper functions).

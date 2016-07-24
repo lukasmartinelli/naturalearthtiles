@@ -31,7 +31,6 @@ function main() {
     exec_psql_file "layers/river.sql"
     exec_psql_file "layers/marine_label.sql"
     exec_psql_file "layers/lake_label.sql"
-    exec_psql_file "layers/biome.sql"
 }
 
 main
