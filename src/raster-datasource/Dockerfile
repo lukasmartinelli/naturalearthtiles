@@ -37,3 +37,4 @@ RUN wget --quiet http://www.naturalearthdata.com/http//www.naturalearthdata.com/
 
 VOLUME /projects/raster-datasource.tm2source
 COPY ./data.yml /projects/raster-datasource.tm2source
+CMD ["/bin/true"]
