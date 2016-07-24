@@ -13,11 +13,20 @@
     "bearing": 0,
     "pitch": 0,
     "sources": {
+        "sr_hr": {
+            "tiles": [
+                "http://naturalearthtiles.org/tiles/natural_earth_shaded_relief.raster/{z}/{x}/{y}.webp"
+            ],
+            "type": "raster",
+            "tileSize": 256,
+            "maxzoom": 6
+        },
         "ne_2_hr_lc_sr": {
             "tiles": [
                 "http://naturalearthtiles.org/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.webp"
             ],
             "type": "raster",
+            "tileSize": 256,
             "maxzoom": 6
         },
         "ne_2_hr_lc": {
@@ -25,6 +34,7 @@
                 "http://naturalearthtiles.org/tiles/natural_earth_2.raster/{z}/{x}/{y}.webp"
             ],
             "type": "raster",
+            "tileSize": 256,
             "maxzoom": 6
         },
         "hyp_hr": {
@@ -32,6 +42,7 @@
                 "http://naturalearthtiles.org/tiles/natural_earth_cross_blended_hypso.raster/{z}/{x}/{y}.webp"
             ],
             "type": "raster",
+            "tileSize": 256,
             "maxzoom": 6
         },
         "hyp_hr_sr": {
@@ -39,6 +50,7 @@
                 "http://naturalearthtiles.org/tiles/natural_earth_cross_blended_hypso_shaded_relief.raster/{z}/{x}/{y}.webp"
             ],
             "type": "raster",
+            "tileSize": 256,
             "maxzoom": 6
         },
         "gray_hr_sr": {
@@ -46,6 +58,7 @@
                 "http://naturalearthtiles.org/tiles/natural_earth_gray_hypso_shaded_relief.raster/{z}/{x}/{y}.webp"
             ],
             "type": "raster",
+            "tileSize": 256,
             "maxzoom": 6
         }
     },
@@ -92,6 +105,16 @@
             "id": "hyp_hr_sr",
             "type": "raster",
             "source": "hyp_hr_sr",
+            "interactive": true,
+            "layout": {
+                "visibility": "none"
+            },
+            "paint": {}
+        },
+        {
+            "id": "sr_hr",
+            "type": "raster",
+            "source": "sr_hr",
             "interactive": true,
             "layout": {
                 "visibility": "none"
