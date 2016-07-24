@@ -1,6 +1,6 @@
 .PHONY: all
 
-all: export-vectortiles db-schema import-wwf import-naturalearth export-rastertiles raster-datasource
+all: export-vectortiles db-schema import-wwf import-naturalearth raster-datasource
 
 export-vectortiles:
 	docker build -t lukasmartinelli/natural-earth-vector-tiles:export-vectortiles src/export-vectortiles
@@ -16,6 +16,3 @@ import-naturalearth:
 
 raster-datasource:
 	docker build -t lukasmartinelli/natural-earth-vector-tiles:raster-datasource src/raster-datasource
-
-export-rastertiles: export-vectortiles
-	docker build -t lukasmartinelli/natural-earth-vector-tiles:export-rastertiles src/export-rastertiles

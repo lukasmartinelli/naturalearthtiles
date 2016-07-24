@@ -39,9 +39,3 @@ export-vectortiles:
    - ./src/vector-datasource:/tm2source
   links:
    - postgres:postgres
-export-rastertiles:
-  image: "lukasmartinelli/natural-earth-vector-tiles:export-rastertiles"
-  volumes_from:
-   - raster-datasource
-  volumes:
-   - ./data:/export

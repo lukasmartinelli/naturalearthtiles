@@ -61,12 +61,7 @@ in a Docker container and visit `localhost:3000`.
 docker-compose up mapbox-studio
 ```
 
-Export the raster tiles from the Natural Earth II raster data source.
-The exported raster tiles are stored in `data/natural_earth_2_raster.mbtiles`.
-
-```bash
-docker-compose run export-vectortiles
-```
+The raster tiles are exported directly from Mapbox Studio from the `raster-datasource`. This process is not automated yet.
 
 ## License
 
