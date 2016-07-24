@@ -1,0 +1,9 @@
+{
+    "center": "6.2347,45.4062,6", 
+    "format": "webp", 
+    "description": "Natural Earth II raster tiles from https://github.com/lukasmartinelli/natural-earth-vector-tiles", 
+    "bounds": "-180,-85.0511,180,85.0511", 
+    "minzoom": "0", 
+    "maxzoom": "6", 
+    "name": "Natural Earth II with Shaded Relief"
+}

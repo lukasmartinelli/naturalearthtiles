@@ -1,6 +1,6 @@
 {
     "version": 8,
-    "name": "Natural Earth II (with Shaded Relief)",
+    "name": "Natural Earth II",
     "metadata": {
         "mapbox:autocomposite": false,
         "mapbox:type": "template"
@@ -13,7 +13,7 @@
     "bearing": 0,
     "pitch": 0,
     "sources": {
-        "ne_2_hr_lc_sr": {
+        "ne_2_hr_lc": {
             "tiles": [
                 "http://naturalearthtiles.org/tiles/natural_earth_2.raster/{z}/{x}/{y}.webp"
             ],
@@ -30,9 +30,9 @@
             }
         },
         {
-            "id": "ne_2_hr_lc_sr",
+            "id": "ne_2_hr_lc",
             "type": "raster",
-            "source": "ne_2_hr_lc_sr",
+            "source": "ne_2_hr_lc",
             "interactive": true,
             "layout": {
                 "visibility": "visible"

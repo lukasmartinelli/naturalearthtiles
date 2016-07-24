@@ -1,0 +1,8 @@
+{
+    "center": "4.9988,41.525,5", 
+    "format": "webp", 
+    "description": "Natural Earth raster tiles from https://github.com/lukasmartinelli/natural-earth-vector-tiles", 
+    "minzoom": "0", 
+    "maxzoom": "6", 
+    "name": "Gray Earth with Shaded Relief and Hypsography"
+}
