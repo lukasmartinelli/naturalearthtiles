@@ -54,6 +54,7 @@
 </head>
 <body>
 
+<nav id="menu"></nav>
 <div id='map'></div>
 <script>
 if (!mapboxgl.supported()) {
@@ -69,7 +70,7 @@ if (!mapboxgl.supported()) {
   map.scrollZoom.disable();
   map.addControl(new mapboxgl.Navigation());
 
-  var toggleableLayerIds = ['ne_2_hr_lc', 'ne_2_hr_lc_sr'];
+  var toggleableLayerIds = ['ne_2_hr_lc', 'ne_2_hr_lc_sr', 'hyp_hr', 'hyp_hr_sr', 'gray_hr_sr'];
 	for (var i = 0; i < toggleableLayerIds.length; i++) {
 			var id = toggleableLayerIds[i];
 
