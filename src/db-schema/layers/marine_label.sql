@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW marine_label_z3 AS (
+CREATE OR REPLACE VIEW marine_label_z2 AS (
     SELECT geom, name, scalerank, featurecla AS type
     FROM ne_110m_geography_marine_polys
 );

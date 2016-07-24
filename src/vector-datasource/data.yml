@@ -326,7 +326,7 @@ Layer:
       table: |-
         ( SELECT topoint(geom) AS geom, name, scalerank, type
           FROM (
-              SELECT * FROM marine_label_z3 WHERE z(!scale_denominator!) BETWEEN 3 AND 4
+              SELECT * FROM marine_label_z2 WHERE z(!scale_denominator!) BETWEEN 2 AND 4
               UNION ALL
               SELECT * FROM marine_label_z5 WHERE z(!scale_denominator!) BETWEEN 5 AND 6
               UNION ALL
