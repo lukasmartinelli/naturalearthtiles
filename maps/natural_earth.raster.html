@@ -16,7 +16,7 @@
         top: 10px;
         right: 10px;
         border-radius: 3px;
-        width: 170px;
+        width: 160px;
         border: 1px solid rgba(0,0,0,0.4);
         font-family: 'Open Sans', sans-serif;
       }
@@ -86,10 +86,10 @@
       }
     }
 
-    toggleableLayers.forEach(function(layer, idx) {
+    toggleableLayers.forEach(function(layer) {
         var link = document.createElement('a');
         link.href = '#';
-        link.className ='';
+        link.className = '';
         link.layerId = layer.id;
         link.textContent = layer.name;
 
@@ -104,8 +104,9 @@
 
         menu.appendChild(link);
     });
-    // Show first layer
-    menu.children[0].click();
+    setTimeout(function() {
+      menu.children[0].click();
+    }, 1000);
   }
 </script>
 </body>
