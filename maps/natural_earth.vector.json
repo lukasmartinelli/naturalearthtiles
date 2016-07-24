@@ -549,8 +549,7 @@
             "layout": {
                 "icon-image": "airport-11",
                 "text-font": [
-                    "Open Sans Semibold",
-                    "Arial Unicode MS Bold"
+                    "Open Sans Semibold"
                 ],
                 "text-field": "{abbrev}",
                 "text-max-width": 9,
@@ -587,8 +586,7 @@
             "layout": {
                 "icon-image": "ferry-11",
                 "text-font": [
-                    "Open Sans Semibold",
-                    "Arial Unicode MS Bold"
+                    "Open Sans Semibold"
                 ],
                 "text-size": 12,
                 "text-max-width": 9,
@@ -646,8 +644,7 @@
                     ]
                 },
                 "text-font": [
-                    "Open Sans Italic",
-                    "Arial Unicode MS Regular"
+                    "Open Sans Italic"
                 ],
                 "symbol-placement": "point",
                 "text-offset": [
@@ -705,8 +702,7 @@
                     ]
                 },
                 "text-font": [
-                    "Open Sans Italic",
-                    "Arial Unicode MS Regular"
+                    "Open Sans Italic"
                 ],
                 "symbol-placement": "point",
                 "text-offset": [
@@ -762,8 +758,7 @@
                     ]
                 },
                 "text-font": [
-                    "Open Sans Italic",
-                    "Arial Unicode MS Regular"
+                    "Open Sans Italic"
                 ],
                 "symbol-placement": "point",
                 "text-offset": [
@@ -793,8 +788,7 @@
             "interactive": true,
             "layout": {
                 "text-font": [
-                    "Open Sans Semibold",
-                    "Arial Unicode MS Bold"
+                    "Open Sans Semibold"
                 ],
                 "text-field": "{name}",
                 "text-max-width": 8,
@@ -837,8 +831,7 @@
                 "visibility": "visible",
                 "text-field": "{postal}",
                 "text-font": [
-                    "Open Sans Bold",
-                    "Arial Unicode MS Bold"
+                    "Open Sans Bold"
                 ],
                 "text-size": {
                     "base": 1.2,
@@ -880,8 +873,7 @@
             ],
             "layout": {
                 "text-font": [
-                    "Open Sans Bold",
-                    "Arial Unicode MS Bold"
+                    "Open Sans Bold"
                 ],
                 "text-field": "{name}",
                 "text-max-width": 6.25,
@@ -923,8 +915,7 @@
             ],
             "layout": {
                 "text-font": [
-                    "Open Sans Bold",
-                    "Arial Unicode MS Bold"
+                    "Open Sans Bold"
                 ],
                 "text-field": "{name}",
                 "text-max-width": 6.25,
@@ -978,8 +969,7 @@
             ],
             "layout": {
                 "text-font": [
-                    "Open Sans Bold",
-                    "Arial Unicode MS Bold"
+                    "Open Sans Bold"
                 ],
                 "text-field": "{name}",
                 "text-max-width": 6.25,
