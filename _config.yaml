@@ -1,0 +1,14 @@
+## Site settings
+name: Natural Earth Vector and Raster Tiles
+permalink: pretty
+full_url: 'http://naturalearthtiles.org'
+tweet: "Free vector and raster tiles from Natural Earth data"
+
+# Build settings
+markdown: kramdown
+kramdown:
+  hard_wrap: false
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+highlighter: rouge

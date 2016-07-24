@@ -1,0 +1,117 @@
+---
+id: home
+layout: default
+title: Natural Earth Vector and Raster Tiles
+published: true
+---
+
+<div class="row bg-gray-light banner">
+  <div class="col12">
+    <div class="container container-branding center padt-5 padb-6">
+        <p class="big readable">
+        <a href="http://www.naturalearthdata.com/">Natural Earth</a> is one of the best public domain data sets and now you can instantly use it for your mapping projects by using the prerendered vector or raster tiles.
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col12">
+  <div class="container">
+  <h1 class="center padb-3">Vector Downloads</h1>
+  <p>The Natural Earth Vector Tiles support the <a href="https://github.com/mapbox/vector-tile-spec">Mapbox Vector Tile Spec</a> and consist of carefully curated layers from the cultural and physical vector data from Natural Earth.
+  Style it with <a href="http://osm2vectortiles.org/docs/create-map-with-mapbox-studio">Mapbox Studio</a> and display the tiles with <a href="http://osm2vectortiles.org/docs/getting-started">Mapbox GL JS</a>.
+  </p>
+  <div id="planet-list">
+    <div class="col12 download-item">
+      <div class="col4 download-title" onclick="location.href='https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet.mbtiles'">
+       Natural Earth
+      </div>
+      <div class="col2" onclick="location.href='https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet.mbtiles'">
+        56 GB
+      </div>
+      <div class="col6 clipboard">
+        <input id="world" class="clipboard-input" value="https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet.mbtiles">
+        <button class="clipboard-button hint--bottom hint--rounded" data-clipboard-target="#world" onclick="setHint(this, 'Copied!')" onmouseout="setHint(this, 'Copy to clipboard')">
+            <img src="/img/clipboard-black.svg" class="clipboard-img" alt="Copy to clipboard">
+        </button>
+      </div>
+    </div>
+  </div>
+  <h1 class="center padb-3">Raster Downloads</h1>
+  <p>The different Raster tile sets are traditional <a href="https://developers.google.com/speed/webp/">WebP</a> raster tiles made from the <a href="http://www.naturalearthdata.com/downloads/10m-raster-data/">Natural Earth Raster TIF files</a>.
+  </p>
+  <div id="planet-list">
+    <div class="col12 download-item">
+      <div class="col4 download-title" onclick="location.href='https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet_z0-z8.mbtiles'">
+        Natural Earth II 
+      </div>
+      <div class="col2" onclick="location.href='https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet_z0-z8.mbtiles'">
+        261 MB
+      </div>
+      <div class="col6 clipboard">
+        <input id="world_z0-z8" class="clipboard-input" value="https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet_z0-z8.mbtiles">
+        <button class="clipboard-button hint--bottom hint--rounded" data-clipboard-target="#world_z0-z8" onclick="setHint(this, 'Copied!')" onmouseout="setHint(this, 'Copy to clipboard')">
+            <img src="/img/clipboard-black.svg" class="clipboard-img" alt="Copy to clipboard">
+        </button>
+      </div>
+    </div>
+    <div class="col12 download-item">
+      <div class="col4 download-title" onclick="location.href='https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet_z0-z5.mbtiles'">
+        Natural Earth II (with Shaded Relief)
+      </div>
+      <div class="col2" onclick="location.href='https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet_z0-z5.mbtiles'">
+        10 MB
+      </div>
+      <div class="col6 clipboard">
+        <input id="world_z0-z5" class="clipboard-input" value="https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v2.0/planet_z0-z5.mbtiles">
+        <button class="clipboard-button hint--bottom hint--rounded" data-hint="Copy to clipboard" data-clipboard-target="#world_z0-z5" onclick="setHint(this, 'Copied!')" onmouseout="setHint(this, 'Copy to clipboard')">
+            <img src="/img/clipboard-black.svg" class="clipboard-img" alt="Copy to clipboard">
+        </button>
+      </div>
+    </div>
+  </div>
+	</div>
+</div>
+
+<div class="row article">
+  <div class="col12">
+    <div class="container">
+      <h1 class="center pady-2">Get Started</h1>
+      <div class="col6">
+        <h2>Create your own Map</h2>
+        <p>Quickly get started designing your maps using <a href="/docs/create-map-with-mapbox-studio">Mapbox Studio</a> and display your map using <a href="/docs/getting-started">Mapbox GL JS</a>.
+        </p>
+      </div>
+      <div class="col6">
+        <h2>Serve your own Tiles</h2>
+        <p>You can <a href="/docs/getting-started">host the vector tiles yourself</a> and have complete control over your infrastructure, even behind a firewall. Or just use our <a href="/docs/getting-started">public CDN</a> for the vector tile serving.
+        </p>
+      </div>
+      <div class="col6">
+        <h2>Enable Offline Applications</h2>
+        <p>The <a href="/downloads/">vector tiles of the entire worlds as well as extracts are downloadable</a> and fit on a single USB stick or smartphone - enabling new possibilities for mobile and desktop developers.
+        </p>
+      </div>
+      <div class="col6">
+        <h2>Generate custom Vector Tiles</h2>
+        <p>
+        <a href="https://github.com/osm2vectortiles/osm2vectortiles">The OpenSource workflow</a> for producing vector tiles from OpenStreetMap data is publicly available and documented. Everyone can adapt the workflow to <a href="docs/own-vector-tiles">create their own custom vector tiles</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col12">
+    <h1 class="center padb-3">Maps</h1>
+    <p class="big readable padb-1">
+       Create stunning maps that don’t depend on any third party service and just use our <a href="/downloads">downloadable vector tiles</a>.
+       Visit the <a href="/maps">Map Gallery</a> for more examples.
+    </p>
+    <iframe src="/maps/flyover.html" frameborder="0" class="col12 map-container" style="height:450px"></iframe>
+  </div>
+  </div>
+</div>
+
+
