@@ -65,8 +65,8 @@
             "maxzoom": 6
         }
     },
-    "sprite": "mapbox://sprites/morgenkaffee/ciqo4gtwo0037c0m7tpcosu63",
-    "glyphs": "mapbox://fonts/morgenkaffee/{fontstack}/{range}.pbf",
+    "sprite": "https://raw.githubusercontent.com/osm2vectortiles/mapbox-gl-styles/master/sprites/bright-v9",
+    "glyphs": "https://raw.githubusercontent.com/osm2vectortiles/mapbox-gl-styles/master/glyphs/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
