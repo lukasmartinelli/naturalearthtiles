@@ -1,0 +1,1011 @@
+{
+    "version": 8,
+    "name": "Natural Earth",
+    "metadata": {
+        "mapbox:autocomposite": false,
+        "mapbox:type": "template",
+        "mapbox:groups": {
+            "783e123af81d2ad277f88278ff1f7c2f": {
+                "name": "State labels"
+            },
+            "1444849258897.3083": {
+                "name": "Marine labels",
+                "collapsed": true
+            },
+            "1444849242106.713": {
+                "name": "Country labels",
+                "collapsed": false
+            },
+            "1444849382550.77": {
+                "name": "Water",
+                "collapsed": false
+            },
+            "1444849345966.4436": {
+                "name": "Roads",
+                "collapsed": false
+            },
+            "1444849307123.581": {
+                "name": "Admin  lines",
+                "collapsed": false
+            },
+            "1444849272561.29": {
+                "name": "Place labels",
+                "collapsed": false
+            },
+            "491c3d88fb897a38b501854b4b3a734b": {
+                "name": "Landuse"
+            },
+            "1444849297111.495": {
+                "name": "POI labels",
+                "collapsed": false
+            }
+        }
+    },
+    "center": [
+        20.72770651703172,
+        51.91110028037039
+    ],
+    "zoom": 2.305730813458177,
+    "bearing": 0,
+    "pitch": 0,
+    "sources": {
+        "natural_earth": {
+            "tiles": [
+                "http://naturalearthtiles.org/tiles/natural_earth.vector/{z}/{x}/{y}.pbf"
+            ],
+            "maxzoom": 7,
+            "type": "vector"
+        },
+        "ne_2_hr_lc_sr": {
+            "tiles": [
+                "http://naturalearthtiles.org/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.webp"
+            ],
+            "type": "raster",
+            "tileSize": 256,
+            "maxzoom": 6
+        }
+    },
+    "sprite": "mapbox://sprites/morgenkaffee/ciqo4gtwo0037c0m7tpcosu63",
+    "glyphs": "mapbox://fonts/morgenkaffee/{fontstack}/{range}.pbf",
+    "layers": [
+        {
+            "id": "background",
+            "type": "background",
+            "interactive": true,
+            "paint": {
+                "background-color": "#f8f4f0"
+            }
+        },
+        {
+            "id": "ne_2_hr_lc_sr",
+            "type": "raster",
+            "source": "ne_2_hr_lc_sr",
+            "interactive": true,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "raster-opacity": {
+                    "base": 0.5,
+                    "stops": [
+                        [
+                            0,
+                            0.6
+                        ],
+                        [
+                            4,
+                            1
+                        ],
+                        [
+                            8,
+                            0.3
+                        ]
+                    ]
+                },
+                "raster-contrast": 0
+            }
+        },
+        {
+            "id": "river",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444849382550.77"
+            },
+            "source": "natural_earth",
+            "source-layer": "river",
+            "interactive": true,
+            "layout": {
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-color": "#a0c8f0",
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            11,
+                            1
+                        ],
+                        [
+                            20,
+                            6
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "water_shadow",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1444849382550.77"
+            },
+            "source": "natural_earth",
+            "source-layer": "water",
+            "interactive": true,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "#a0c8f0",
+                "fill-opacity": 1,
+                "fill-translate": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            7,
+                            [
+                                0,
+                                0
+                            ]
+                        ],
+                        [
+                            16,
+                            [
+                                -1,
+                                -1
+                            ]
+                        ]
+                    ]
+                },
+                "fill-translate-anchor": "viewport"
+            }
+        },
+        {
+            "id": "water",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1444849382550.77"
+            },
+            "source": "natural_earth",
+            "source-layer": "water",
+            "interactive": true,
+            "filter": [
+                "in",
+                "$type",
+                "LineString",
+                "Point",
+                "Polygon"
+            ],
+            "paint": {
+                "fill-color": "hsl(210, 87%, 84%)"
+            }
+        },
+        {
+            "id": "urban",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "491c3d88fb897a38b501854b4b3a734b"
+            },
+            "source": "natural_earth",
+            "source-layer": "urban",
+            "interactive": true,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "hsla(72, 5%, 77%, 0.47)",
+                "fill-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            6,
+                            0
+                        ],
+                        [
+                            9,
+                            1
+                        ]
+                    ]
+                },
+                "fill-antialias": true,
+                "fill-outline-color": "hsla(0, 100%, 99%, 0)"
+            }
+        },
+        {
+            "id": "ice",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "491c3d88fb897a38b501854b4b3a734b"
+            },
+            "source": "natural_earth",
+            "source-layer": "ice",
+            "interactive": true,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "hsla(215, 92%, 88%, 0.32)"
+            }
+        },
+        {
+            "id": "road_motorway_casing",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444849345966.4436"
+            },
+            "source": "natural_earth",
+            "source-layer": "road",
+            "minzoom": 5,
+            "interactive": true,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#e9ac77",
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            5,
+                            0.4
+                        ],
+                        [
+                            6,
+                            0.6
+                        ],
+                        [
+                            7,
+                            1.5
+                        ],
+                        [
+                            20,
+                            22
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "road_motorway",
+            "metadata": {
+                "mapbox:group": "1444849345966.4436"
+            },
+            "ref": "road_motorway_casing",
+            "interactive": true,
+            "paint": {
+                "line-color": "#fc8",
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            6.5,
+                            0
+                        ],
+                        [
+                            7,
+                            0.5
+                        ],
+                        [
+                            20,
+                            18
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "road_major_rail",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444849345966.4436"
+            },
+            "source": "natural_earth",
+            "source-layer": "railroad",
+            "interactive": true,
+            "paint": {
+                "line-color": "hsl(0, 68%, 40%)",
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            6.5,
+                            0
+                        ],
+                        [
+                            7,
+                            0.5
+                        ],
+                        [
+                            20,
+                            18
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "road_major_rail_hatching",
+            "metadata": {
+                "mapbox:group": "1444849345966.4436"
+            },
+            "ref": "road_major_rail",
+            "interactive": true,
+            "paint": {
+                "line-color": "hsl(0, 68%, 40%)",
+                "line-dasharray": [
+                    0.2,
+                    8
+                ],
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            5,
+                            0.6
+                        ],
+                        [
+                            6,
+                            0.8
+                        ],
+                        [
+                            7,
+                            1.8
+                        ],
+                        [
+                            20,
+                            22
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "admin_level_1",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444849307123.581"
+            },
+            "source": "natural_earth",
+            "source-layer": "admin",
+            "interactive": true,
+            "filter": [
+                "==",
+                "admin_level",
+                1
+            ],
+            "layout": {
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "#9e9cab",
+                "line-dasharray": [
+                    3,
+                    1,
+                    1,
+                    1
+                ],
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            2,
+                            0.4
+                        ],
+                        [
+                            5,
+                            1
+                        ],
+                        [
+                            12,
+                            3
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "admin_level_0",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444849307123.581"
+            },
+            "source": "natural_earth",
+            "source-layer": "admin",
+            "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "all",
+                    [
+                        "!=",
+                        "class",
+                        "dispute"
+                    ],
+                    [
+                        "==",
+                        "admin_level",
+                        0
+                    ]
+                ],
+                [
+                    "in",
+                    "$type",
+                    "LineString",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-color": "#9e9cab",
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            0,
+                            0.4
+                        ],
+                        [
+                            4,
+                            1.4
+                        ],
+                        [
+                            5,
+                            2
+                        ],
+                        [
+                            12,
+                            8
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "admin_level_0_disputed",
+            "type": "line",
+            "metadata": {
+                "mapbox:group": "1444849307123.581"
+            },
+            "source": "natural_earth",
+            "source-layer": "admin",
+            "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "admin_level",
+                    0
+                ],
+                [
+                    "==",
+                    "class",
+                    "dispute"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-color": "#9e9cab",
+                "line-dasharray": [
+                    2,
+                    2
+                ],
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            0,
+                            0.4
+                        ],
+                        [
+                            4,
+                            1.4
+                        ],
+                        [
+                            5,
+                            2
+                        ],
+                        [
+                            12,
+                            8
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "airport_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849297111.495"
+            },
+            "source": "natural_earth",
+            "source-layer": "airport_label",
+            "minzoom": 6,
+            "interactive": true,
+            "filter": [
+                "==",
+                "$type",
+                "Point"
+            ],
+            "layout": {
+                "icon-image": "airport-11",
+                "text-font": [
+                    "Open Sans Semibold",
+                    "Arial Unicode MS Bold"
+                ],
+                "text-field": "{abbrev}",
+                "text-max-width": 9,
+                "text-padding": 2,
+                "text-offset": [
+                    0,
+                    0.6
+                ],
+                "text-anchor": "top",
+                "text-size": 12
+            },
+            "paint": {
+                "text-color": "#666",
+                "text-halo-color": "#ffffff",
+                "text-halo-width": 1,
+                "text-halo-blur": 0.5
+            }
+        },
+        {
+            "id": "port_label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849297111.495"
+            },
+            "source": "natural_earth",
+            "source-layer": "port_label",
+            "minzoom": 6,
+            "interactive": true,
+            "filter": [
+                "==",
+                "$type",
+                "Point"
+            ],
+            "layout": {
+                "icon-image": "ferry-11",
+                "text-font": [
+                    "Open Sans Semibold",
+                    "Arial Unicode MS Bold"
+                ],
+                "text-size": 12,
+                "text-max-width": 9,
+                "text-padding": 2,
+                "text-offset": [
+                    0,
+                    0.6
+                ],
+                "text-anchor": "top",
+                "text-field": "{name}"
+            },
+            "paint": {
+                "text-color": "#666",
+                "text-halo-color": "#ffffff",
+                "text-halo-width": 1,
+                "text-halo-blur": 0.5
+            }
+        },
+        {
+            "id": "marine_label_sm",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849258897.3083"
+            },
+            "source": "natural_earth",
+            "source-layer": "marine_label",
+            "minzoom": 3,
+            "maxzoom": 10,
+            "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Point"
+                ],
+                [
+                    ">=",
+                    "scalerank",
+                    4
+                ]
+            ],
+            "layout": {
+                "text-line-height": 1.6,
+                "text-size": {
+                    "stops": [
+                        [
+                            3,
+                            12
+                        ],
+                        [
+                            6,
+                            16
+                        ]
+                    ]
+                },
+                "text-font": [
+                    "Open Sans Italic",
+                    "Arial Unicode MS Regular"
+                ],
+                "symbol-placement": "point",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-letter-spacing": 0.2,
+                "text-max-width": 5
+            },
+            "paint": {
+                "text-color": "#74aee9",
+                "text-halo-color": "rgba(255,255,255,0.7)",
+                "text-halo-width": 0.75,
+                "text-halo-blur": 0.75
+            }
+        },
+        {
+            "id": "marine_label_md",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849258897.3083"
+            },
+            "source": "natural_earth",
+            "source-layer": "marine_label",
+            "minzoom": 2,
+            "maxzoom": 8,
+            "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "scalerank",
+                    3
+                ],
+                [
+                    "==",
+                    "$type",
+                    "Point"
+                ]
+            ],
+            "layout": {
+                "text-line-height": 1.6,
+                "text-size": {
+                    "stops": [
+                        [
+                            2,
+                            14
+                        ],
+                        [
+                            5,
+                            20
+                        ]
+                    ]
+                },
+                "text-font": [
+                    "Open Sans Italic",
+                    "Arial Unicode MS Regular"
+                ],
+                "symbol-placement": "point",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-letter-spacing": 0.2,
+                "text-max-width": 5
+            },
+            "paint": {
+                "text-color": "#74aee9",
+                "text-halo-color": "rgba(255,255,255,0.7)",
+                "text-halo-width": 0.75,
+                "text-halo-blur": 0.75
+            }
+        },
+        {
+            "id": "marine_label_lg",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849258897.3083"
+            },
+            "source": "natural_earth",
+            "source-layer": "marine_label",
+            "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Point"
+                ],
+                [
+                    "==",
+                    "scalerank",
+                    0
+                ]
+            ],
+            "layout": {
+                "text-line-height": 1.6,
+                "text-size": {
+                    "stops": [
+                        [
+                            1,
+                            14
+                        ],
+                        [
+                            4,
+                            30
+                        ]
+                    ]
+                },
+                "text-font": [
+                    "Open Sans Italic",
+                    "Arial Unicode MS Regular"
+                ],
+                "symbol-placement": "point",
+                "text-offset": [
+                    0,
+                    0
+                ],
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-letter-spacing": 0.2,
+                "text-max-width": 5
+            },
+            "paint": {
+                "text-color": "#74aee9",
+                "text-halo-color": "rgba(255,255,255,0.7)",
+                "text-halo-width": 0.75,
+                "text-halo-blur": 0.75
+            }
+        },
+        {
+            "id": "place_label_city",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849272561.29"
+            },
+            "source": "natural_earth",
+            "source-layer": "place_label",
+            "interactive": true,
+            "layout": {
+                "text-font": [
+                    "Open Sans Semibold",
+                    "Arial Unicode MS Bold"
+                ],
+                "text-field": "{name}",
+                "text-max-width": 8,
+                "text-size": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            7,
+                            12
+                        ],
+                        [
+                            11,
+                            24
+                        ]
+                    ]
+                }
+            },
+            "paint": {
+                "text-color": "#333",
+                "text-halo-color": "rgba(255,255,255,0.8)",
+                "text-halo-width": 1.2
+            }
+        },
+        {
+            "id": "state_label_2",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "783e123af81d2ad277f88278ff1f7c2f"
+            },
+            "source": "natural_earth",
+            "source-layer": "state_label",
+            "maxzoom": 5,
+            "interactive": true,
+            "filter": [
+                "<=",
+                "scalerank",
+                2
+            ],
+            "layout": {
+                "visibility": "visible",
+                "text-field": "{postal}",
+                "text-font": [
+                    "Open Sans Bold",
+                    "Arial Unicode MS Bold"
+                ],
+                "text-size": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            4,
+                            10
+                        ],
+                        [
+                            11,
+                            24
+                        ]
+                    ]
+                },
+                "text-max-width": 2,
+                "text-transform": "uppercase",
+                "text-letter-spacing": 0.15
+            },
+            "paint": {
+                "text-color": "#334",
+                "text-halo-color": "rgba(255,255,255,0.8)",
+                "text-halo-blur": 1,
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "country_label_sm",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849242106.713"
+            },
+            "source": "natural_earth",
+            "source-layer": "country_label",
+            "interactive": true,
+            "filter": [
+                "==",
+                "is_tiny",
+                1
+            ],
+            "layout": {
+                "text-font": [
+                    "Open Sans Bold",
+                    "Arial Unicode MS Bold"
+                ],
+                "text-field": "{name}",
+                "text-max-width": 6.25,
+                "text-transform": "uppercase",
+                "text-size": {
+                    "base": 0.9,
+                    "stops": [
+                        [
+                            5,
+                            14
+                        ],
+                        [
+                            9,
+                            22
+                        ]
+                    ]
+                }
+            },
+            "paint": {
+                "text-color": "#334",
+                "text-halo-color": "rgba(255,255,255,0.8)",
+                "text-halo-width": 2,
+                "text-halo-blur": 1
+            }
+        },
+        {
+            "id": "country_label_md",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849242106.713"
+            },
+            "source": "natural_earth",
+            "source-layer": "country_label",
+            "interactive": true,
+            "filter": [
+                "==",
+                "is_tiny",
+                0
+            ],
+            "layout": {
+                "text-font": [
+                    "Open Sans Bold",
+                    "Arial Unicode MS Bold"
+                ],
+                "text-field": "{name}",
+                "text-max-width": 6.25,
+                "text-transform": "uppercase",
+                "text-size": {
+                    "stops": [
+                        [
+                            3,
+                            10
+                        ],
+                        [
+                            8,
+                            24
+                        ]
+                    ]
+                }
+            },
+            "paint": {
+                "text-color": "#334",
+                "text-halo-color": "rgba(255,255,255,0.8)",
+                "text-halo-width": 2,
+                "text-halo-blur": 1
+            }
+        },
+        {
+            "id": "country_label_lg",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "1444849242106.713"
+            },
+            "source": "natural_earth",
+            "source-layer": "country_label",
+            "interactive": true,
+            "filter": [
+                "all",
+                [
+                    "<=",
+                    "labelrank",
+                    5
+                ],
+                [
+                    "==",
+                    "is_tiny",
+                    0
+                ],
+                [
+                    "==",
+                    "scalerank",
+                    0
+                ]
+            ],
+            "layout": {
+                "text-font": [
+                    "Open Sans Bold",
+                    "Arial Unicode MS Bold"
+                ],
+                "text-field": "{name}",
+                "text-max-width": 6.25,
+                "text-transform": "uppercase",
+                "text-size": {
+                    "stops": [
+                        [
+                            1,
+                            10
+                        ],
+                        [
+                            7,
+                            24
+                        ]
+                    ]
+                }
+            },
+            "paint": {
+                "text-color": "#334",
+                "text-halo-color": "rgba(255,255,255,0.8)",
+                "text-halo-width": 2,
+                "text-halo-blur": 1
+            }
+        }
+    ],
+    "created": "2016-07-15T19:13:06.417Z",
+    "id": "ciqo4gtwo0037c0m7tpcosu63",
+    "modified": "2016-07-24T17:40:34.474Z"
+}
