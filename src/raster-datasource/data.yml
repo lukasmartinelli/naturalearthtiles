@@ -1,0 +1,70 @@
+_prefs:
+  disabled: []
+  inspector: false
+  mapid: ''
+  rev: ''
+  saveCenter: true
+attribution: ''
+center:
+  - -16.1719
+  - 52.8028
+  - 2
+description: 'Natural Earth Raster Data from naturalearthtiles.org. The raster files register precisely with the 10m vector data.'
+Layer:
+  - id: ne2_hr_lc_sr
+    Datasource:
+      file: ./NE2_HR_LC_SR.tif
+      type: gdal
+    description: 'Natural Earth II with Shaded Relief. Idealized land cover. Add your own water features.'
+    fields: {}
+    properties:
+      "buffer-size": 0
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+  - id: ne2_hr_lc
+    Datasource:
+      file: ./NE2_HR_LC.tif
+      type: gdal
+    description: 'Natural Earth II. Coloring based on idealized land cover (with shaded relief)'
+    fields: {}
+    properties:
+      "buffer-size": 0
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+  - id: hyp_hr
+    Datasource:
+      file: ./HYP_HR.tif
+      type: gdal
+    description: 'Cross-blended Hypsometric Tints. Land coloring based on elevation. Add your own relief shading.'
+    fields: {}
+    properties:
+      "buffer-size": 0
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+  - id: hyp_hr_sr
+    Datasource:
+      file: ./HYP_HR_SR.tif
+      type: gdal
+    description: 'Cross-blended Hypsometric Tints with Shaded Relief. Land coloring based on elevation. Add your own water features.'
+    fields: {}
+    properties:
+      "buffer-size": 0
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+  - id: sr_hr
+    Datasource:
+      file: ./SR_HR.tif
+      type: gdal
+    description: 'Shaded Relief Basic. Grayscale shaded relief.'
+    fields: {}
+    properties:
+      "buffer-size": 0
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+  - id: gray_hr_sr
+    Datasource:
+      file: ./GRAY_HR_SR.tif
+      type: gdal
+    description: 'Gray Earth with Shaded Relief and Hypsography. Add your own oceans, rivers, and lakes.'
+    fields: {}
+    properties:
+      "buffer-size": 0
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+maxzoom: 6
+minzoom: 0
+name: Natural Earth Raster
