@@ -1,16 +1,14 @@
-# Natural Earth Vector and Raster Tiles [![BSD-3 and PDDL
-licensed](https://img.shields.io/badge/license-BSD--3/PDDL-blue.svg)](https://github.com/osm2vectortiles/osm2vectortiles#license)
-[![Build
-Status](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles)
+# Natural Earth Vector and Raster Tiles [![BSD-3 and PDDL licensed](https://img.shields.io/badge/license-BSD--3/PDDL-blue.svg)](https://github.com/lukasmartinelli/naturalearthtiles#license) [![Build Status](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/natural-earth-vector-tiles)
+
 Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients. Raster tiles for [Natural Earth II with shaded relief](http://www.naturalearthdata.com/downloads/10m-raster-data/10m-shaded-relief/) are included as well.
 
 [**:open_file_folder: Download the vector and raster tiles from the releases page**](https://github.com/lukasmartinelli/natural-earth-vector-tiles/releases/latest).
 
-Using the prerendered vector tiles and raster tiles from Natural Earth you are able to create **high quality low zoom level maps**
-which are ideal for global data visualizations or as basis for your own local base map.
-For high zoom level vector tiles please checkout our project to [create vector tiles from Open Street Map](http://osm2vectortiles.org).
+Using the prerendered vector tiles and raster tiles from Natural Earth you are able to create **high quality low zoom level maps**.
 
 ![Mapbox GL visualization of Natural Earth vector tiles](demo.gif)
+
+For high zoom level vector tiles please checkout our project to [create vector tiles from Open Street Map](http://osm2vectortiles.org).
 
 ## Use Vector Tiles
 
