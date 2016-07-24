@@ -508,14 +508,16 @@ Layer:
       table: |-
         ( SELECT *
           FROM (
-              SELECT * FROM admin_z2 WHERE z(!scale_denominator!) = 2
+              SELECT * FROM admin_z0 WHERE z(!scale_denominator!) = 0
+              UNION ALL
+              SELECT * FROM admin_z1 WHERE z(!scale_denominator!) BETWEEN 1 AND 2
               UNION ALL
               SELECT * FROM admin_z3 WHERE z(!scale_denominator!) BETWEEN 3 AND 4
               UNION ALL
               SELECT * FROM admin_z5 WHERE z(!scale_denominator!) BETWEEN 5 AND 6
               UNION ALL
               SELECT * FROM admin_z7 WHERE z(!scale_denominator!) >= 7
-          ) AS states
+          ) AS admin
           WHERE geom && !bbox!
         ) AS data
       type: postgis

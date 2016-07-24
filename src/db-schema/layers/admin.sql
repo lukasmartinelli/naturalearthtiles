@@ -11,11 +11,21 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
-CREATE OR REPLACE VIEW admin_z2 AS (
-    SELECT geom,
-           0 AS admin_level, scalerank,
+CREATE OR REPLACE VIEW admin_z0 AS (
+    SELECT geom, 0 AS admin_level, scalerank,
            admin_class(featurecla) AS class
     FROM ne_110m_admin_0_boundary_lines_land
+);
+
+CREATE OR REPLACE VIEW admin_z1 AS (
+    SELECT geom, 0 AS admin_level, scalerank,
+           admin_class(featurecla) AS class
+    FROM ne_50m_admin_0_boundary_lines_land
+    UNION ALL
+    SELECT geom, 1 AS admin_level, scalerank,
+           admin_class(featurecla) AS class
+    FROM ne_50m_admin_1_states_provinces_lines
+    WHERE scalerank <= 2
 );
 
 CREATE OR REPLACE VIEW admin_z3 AS (
