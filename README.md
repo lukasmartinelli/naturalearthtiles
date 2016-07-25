@@ -8,9 +8,10 @@ The raster tiles are made from the [Natural Earth Raster TIF files](http://www.n
 and are ideal as base layer or shading for your base maps.
 
 [**:globe_with_meridians: Check the demo at naturalearthtiles.org**](http://naturalearthtiles.org)
+
 [**:open_file_folder: Download the vector and raster tiles from the releases page**](https://github.com/lukasmartinelli/natural-earth-vector-tiles/releases/latest).
 
-![Mapbox GL visualization of Natural Earth vector tiles](demo.gif)
+![Mapbox GL visualization of Natural Earth vector tiles](vector_demo.gif)
 ![Natural Earth raster tiles demo](raster_demo.gif)
 
 For high zoom level vector tiles please checkout our project to [create vector tiles from Open Street Map](http://osm2vectortiles.org).
