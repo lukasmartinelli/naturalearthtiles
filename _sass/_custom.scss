@@ -11,6 +11,10 @@
     img{
       vertical-align: bottom;
     }
+
+    @media(max-width: 479px) {
+        font-size: 24px;
+    }
   }
 }
 
@@ -237,7 +241,6 @@ body{
   @media(max-width: 479px) {
       -webkit-flex-direction: row;
       flex-direction: row;
-
   }
 
   @media(max-width: 920px) {
