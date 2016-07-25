@@ -1,12 +1,17 @@
 # Natural Earth Vector and Raster Tiles [![BSD-3 and PDDL licensed](https://img.shields.io/badge/license-BSD--3/PDDL-blue.svg)](https://github.com/lukasmartinelli/naturalearthtiles#license) [![Build Status](https://travis-ci.org/lukasmartinelli/naturalearthtiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/naturalearthtiles)
 
-Prerendered [Natural Earth](http://naturalearthdata.com/) vector tiles encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients as well as raster tiles for the [1:10m raster files](http://www.naturalearthdata.com/downloads/10m-raster-data/).
+[**naturalearthtiles.org**](http://naturalearthtiles.org/) provides prerendered vector and raster tiles for [Natural Earth](http://naturalearthdata.com/).
 
+The vector tiles are encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients and consist of carefully curated layers from the cultural and physical data sets.
+
+The raster tiles are made from the [Natural Earth Raster TIF files](http://www.naturalearthdata.com/downloads/10m-raster-data/)
+and are ideal as base layer or shading for your base maps.
+
+[**:globe_with_meridians: Check the demo at naturalearthtiles.org**](http://naturalearthtiles.org)
 [**:open_file_folder: Download the vector and raster tiles from the releases page**](https://github.com/lukasmartinelli/natural-earth-vector-tiles/releases/latest).
 
-Using the prerendered vector and raster tiles from Natural Earth you are able to create **high quality low zoom level maps**.
-
 ![Mapbox GL visualization of Natural Earth vector tiles](demo.gif)
+![Natural Earth raster tiles demo](raster_demo.gif)
 
 For high zoom level vector tiles please checkout our project to [create vector tiles from Open Street Map](http://osm2vectortiles.org).
 
@@ -19,7 +24,6 @@ Tileservers:
 - [tessera](https://github.com/mojodna/tessera)
 - [tileserver-gl-light](https://github.com/osm2vectortiles/tileserver-gl-light)
 - [tileserver-gl](https://github.com/klokantech/tileserver-gl)
-
 
 ## Run Workflow
 
