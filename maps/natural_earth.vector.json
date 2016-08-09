@@ -58,7 +58,7 @@
         },
         "ne_2_hr_lc_sr": {
             "tiles": [
-                "http://naturalearthtiles.org/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.webp"
+                "http://naturalearthtiles.org/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"
             ],
             "type": "raster",
             "tileSize": 256,
