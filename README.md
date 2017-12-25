@@ -1,13 +1,13 @@
 # Natural Earth Vector and Raster Tiles [![BSD-3 and PDDL licensed](https://img.shields.io/badge/license-BSD--3/PDDL-blue.svg)](https://github.com/lukasmartinelli/naturalearthtiles#license) [![Build Status](https://travis-ci.org/lukasmartinelli/naturalearthtiles.svg?branch=master)](https://travis-ci.org/lukasmartinelli/naturalearthtiles)
 
-[**naturalearthtiles.org**](http://naturalearthtiles.org/) provides prerendered vector and raster tiles for [Natural Earth](http://naturalearthdata.com/).
+[**http://naturalearthtiles.lukasmartinelli.ch**](http://naturalearthtiles.lukasmartinelli.ch/) provides prerendered vector and raster tiles for [Natural Earth](http://naturalearthdata.com/).
 
 The vector tiles are encoded in the [Mapbox vector tile specification](https://github.com/mapbox/vector-tile-spec) for use with Mapbox GL or other clients and consist of carefully curated layers from the cultural and physical data sets.
 
 The raster tiles are made from the [Natural Earth Raster TIF files](http://www.naturalearthdata.com/downloads/10m-raster-data/)
 and are ideal as base layer or shading for your base maps.
 
-[**:globe_with_meridians: Check the demo at naturalearthtiles.org**](http://naturalearthtiles.org)
+[**:globe_with_meridians: Check the demo at http://naturalearthtiles.lukasmartinelli.ch**](http://naturalearthtiles.lukasmartinelli.ch/)
 
 [**:open_file_folder: Download the vector and raster tiles from the releases page**](https://github.com/lukasmartinelli/natural-earth-vector-tiles/releases/latest).
 
