@@ -51,14 +51,14 @@
     "sources": {
         "natural_earth": {
             "tiles": [
-                "http://naturalearthtiles.org/tiles/natural_earth.vector/{z}/{x}/{y}.pbf"
+                "http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth.vector/{z}/{x}/{y}.pbf"
             ],
             "maxzoom": 7,
             "type": "vector"
         },
         "ne_2_hr_lc_sr": {
             "tiles": [
-                "http://naturalearthtiles.org/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"
+                "http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"
             ],
             "type": "raster",
             "tileSize": 256,
