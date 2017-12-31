@@ -3,8 +3,8 @@
   <meta charset='utf-8' />
   <title>Natural Earth Vector Tiles</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.js'></script>
-	<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.css" rel="stylesheet">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css" rel="stylesheet">
   <style>
       body { margin:0; padding:0; }
       #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -15,16 +15,16 @@
 <div id='map'></div>
 <script>
 if (!mapboxgl.supported()) {
-		var vectorMapContainer = document.getElementById("vector-map");
-		vectorMapContainer.innerHTML = 'Your browser does not support Mapbox GL. Either your browser does not support WebGL or it is disabled, please check <a href="https://get.webgl.org/">http://get.webgl.org</a> for more information.'
-	} else {
-	var map = new mapboxgl.Map({
-		container: 'map',
+    var vectorMapContainer = document.getElementById("vector-map");
+    vectorMapContainer.innerHTML = 'Your browser does not support Mapbox GL. Either your browser does not support WebGL or it is disabled, please check <a href="https://get.webgl.org/">http://get.webgl.org</a> for more information.'
+  } else {
+  var map = new mapboxgl.Map({
+    container: 'map',
     style: 'http://naturalearthtiles.lukasmartinelli.ch/maps/natural_earth.vector.json',
     center: [8.54137, 47.36840],
     zoom: 3,
     maxZoom: 7
-	});
+  });
   map.scrollZoom.disable();
   map.addControl(new mapboxgl.Navigation());
 }
